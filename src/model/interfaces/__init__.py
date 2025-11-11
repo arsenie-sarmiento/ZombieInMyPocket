@@ -12,6 +12,7 @@ from .i_item import IItem
 from .i_player import IPlayer
 from .i_tile import ITile
 from .i_game_over import IGameOver
+from .i_time import ITime
 from .i_turn import ITurn
 from .i_game_session_manager import IGameSessionManager
 
@@ -26,4 +27,5 @@ __all__ = [
     'IGameOver',
     'ITurn',
     'IGameSessionManager'
+    'ITime',
 ]
