@@ -1,4 +1,4 @@
-
+# Copied from development/iteration-two branch : src/model/player/player.py
 from src.model.interfaces.i_player import IPlayer
 from src.model.interfaces.i_item import IItem
 from src.enums_and_types.types import Position
