@@ -1,7 +1,7 @@
 # ZombieInMyPocket
 ### BCDE321 Advance Programming - Assignment 3 (Portfolio)
 
-This repository is forked from [Fallen-Pie/ZombieInMyPocket](https://github.com/Fallen-Pie/ZombieInMyPocket) shared repository.
+This repository is forked from [Fallen-Pie/ZombieInMyPocket](https://github.com/Fallen-Pie/ZombieInMyPocket) shared repository, `development/iteration-two` branch.
 
 ---
 
