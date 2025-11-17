@@ -24,20 +24,29 @@ ZombieInMyPocket/
 ├─ requirements.txt
 ├─ src/
 │ ├─ before_pattern/
-│ │ ├─ item/
-│ │ ├─ player/
-│ │ └─ before_pattern.drawio
+│ │ ├─ model/
+| │ │ ├─ item/
+| │ │ ├─ player/
+| │ │ └─ before_pattern.drawio
 | |
 │ ├─ after_pattern/
-│ │ ├─ item/
-│ │ ├─ player/
-│ │ └─ after_pattern.drawio
-│ └─ utils/
+│ │ ├─ model/
+| │ │ ├─ item/
+| │ │ ├─ player/
+| │ │ └─ after_pattern.drawio
+│ └─ model/
+│ │ └─ __init__.py
 |
 ├─ tests/
 │ ├─ before_pattern/
+| │ │ ├─ item.test.py
+| │ │ ├─ player.test.py
+│ │ └─ __init__.py
 | |
 │ └─ after_pattern/
+| │ │ ├─ item.test.py
+| │ │ ├─ player.test.py
+│ │ └─ __init__.py
 └─ README.md
 ```
 ---
@@ -46,8 +55,7 @@ ZombieInMyPocket/
 This is the source code for the python version of Zombie In My Pocket game
 
 ## Game Info
-
-### Imagine you're trapped in a spooky house full of zombies, and you need to save the world before midnight!
+Imagine you're trapped in a spooky house full of zombies, and you need to save the world before midnight!
 
 ### The Goal
 Find an evil zombie totem hidden in the house, then bury it in the graveyard before midnight - or you become zombie food!
