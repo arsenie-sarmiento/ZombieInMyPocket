@@ -1,17 +1,58 @@
 # ZombieInMyPocket
-BCDE321 Advance Programming - Assignment 2 (Group)
+### BCDE321 Advance Programming - Assignment 3 (Portfolio)
 
-# About
+This repository is forked from [Fallen-Pie/ZombieInMyPocket](https://github.com/Fallen-Pie/ZombieInMyPocket) shared repository.
+
+---
+
+**To clone the forked repository, run:**
+```shell
+git clone https://github.com/arsenie-sarmiento/ZombieInMyPocket.git
+```
+
+
+**Run this command to switch to `ass3/portfolio` branch**
+```shell
+git checkout ass3/portfolio
+```
+
+---
+### File Structure
+```
+ZombieInMyPocket/
+├─ .gitignore
+├─ requirements.txt
+├─ src/
+│ ├─ before_pattern/
+│ │ ├─ item/
+│ │ ├─ player/
+│ │ └─ before_pattern.drawio
+| |
+│ ├─ after_pattern/
+│ │ ├─ item/
+│ │ ├─ player/
+│ │ └─ after_pattern.drawio
+│ └─ utils/
+|
+├─ tests/
+│ ├─ before_pattern/
+| |
+│ └─ after_pattern/
+└─ README.md
+```
+---
+
+## About
 This is the source code for the python version of Zombie In My Pocket game
 
-# Game Info
+## Game Info
 
-## Imagine you're trapped in a spooky house full of zombies, and you need to save the world before midnight!
+### Imagine you're trapped in a spooky house full of zombies, and you need to save the world before midnight!
 
-## The Goal
+### The Goal
 Find an evil zombie totem hidden in the house, then bury it in the graveyard before midnight - or you become zombie food!
 
-## How to Play:
+### How to Play:
 
 Explore the House: You start at the front door and flip over room tiles as you move through the house, discovering new rooms like kitchens, bedrooms, and basements.
 
@@ -23,7 +64,7 @@ Find the Temple: Look for the evil temple room where the cursed totem is hidden.
 
 Bury the Totem: Once you have the totem, get to the backyard graveyard and bury it to win!
 
-## Key Features:
+### Key Features:
 
 It's a solo game that takes 5-20 minutes
 
