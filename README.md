@@ -23,20 +23,24 @@ ZombieInMyPocket/
 ├─ .gitignore
 ├─ requirements.txt
 ├─ src/
-│ ├─ before_pattern/
-│ │ ├─ model/
-| │ │ ├─ item/
-| │ │ ├─ player/
-| │ │ └─ before_pattern.drawio
+│ ├─ enums_and_types/
+│ │ ├─ __init__.py
+│ │ ├─ enums.py
+│ │ ├─ game_over_reason.py
+| │ └─ types.py
 | |
-│ ├─ after_pattern/
-│ │ ├─ model/
-| │ │ ├─ item/
-| │ │ ├─ player/
-| │ │ └─ after_pattern.drawio
-│ └─ model/
-│ │ └─ __init__.py
-|
+│ ├─ model/
+│ │ ├─ __init__.py
+│ │ ├─ interfaces/
+│ │ ├─ item/
+│ │ ├─ player/
+| │ └─ before_pattern.drawio
+| |
+│ └─ model_after_pattern/
+│   ├─ item/
+│   ├─ player/
+|   └─ after_pattern.drawio
+| 
 ├─ tests/
 │ ├─ before_pattern/
 | │ │ ├─ item.test.py
@@ -50,7 +54,9 @@ ZombieInMyPocket/
 └─ README.md
 ```
 ---
+- *model* -> code before applying pattern
 
+---
 ## About
 This is the source code for the python version of Zombie In My Pocket game
 
