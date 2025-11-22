@@ -75,7 +75,7 @@ class IPlayer(ABC):
     def set_position(self, position: Position) -> None:
         """Move the player to a new position on the game board.
         
-        Args:
+d        Args:
             position: The new Position coordinates for the player
         """
         pass
