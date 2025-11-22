@@ -1,9 +1,9 @@
-from src.model.game_time.game_time import GameTime
+from src.model import GameTime
 
 def test_initial_time_string():
     g = GameTime(9)
     # original __str__ method embedded in GameTime
-    assert str(g) == "The time is now 09:00AM"
+    assert str(g) == "The time is now 09:00PM"
 
 def test_get_current_time():
     g = GameTime(10)

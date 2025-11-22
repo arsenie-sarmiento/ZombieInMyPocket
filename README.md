@@ -23,6 +23,7 @@ ZombieInMyPocket/
 ├─ .gitignore
 ├─ requirements.txt
 ├─ src/
+│ ├─ __init__.py
 │ ├─ enums_and_types/
 │ │ ├─ __init__.py
 │ │ ├─ enums.py
@@ -33,7 +34,9 @@ ZombieInMyPocket/
 │ │ ├─ __init__.py
 │ │ ├─ interfaces/
 │ │ ├─ game_time/
+│ | │ └─ game_time.py
 │ │ ├─ player/
+│ | │ └─ player.py
 | │ └─ before_pattern.drawio
 | |
 │ └─ model_after_pattern/
@@ -42,6 +45,7 @@ ZombieInMyPocket/
 |   └─ after_pattern.drawio
 | 
 ├─ tests/
+│ ├─ __init__.py
 │ ├─ before_pattern/
 | │ │ ├─ item.test.py
 | │ │ ├─ player.test.py

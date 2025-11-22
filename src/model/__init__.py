@@ -1,14 +1,15 @@
-"""Interface definitions for the Zombie in My Pocket game.
+"""Package definitions for the Zombie in My Pocket game MODEL BEFORE PATTERN.
 
 This module contains [].
 """
 
-# from .game_time.game_time import GameTime
-# from .player.player import Player
-from .calculator import Calculator
+from .interfaces import IItem, IPlayer
+from .game_time import GameTime
+from .player import Player
 
 __all__ = [
-    # 'GameTime',
-    # 'Player',
-    'Calculator'
+    'IItem',
+    'IPlayer',
+    'GameTime',
+    'Player'
 ]
