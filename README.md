@@ -32,12 +32,12 @@ ZombieInMyPocket/
 │ ├─ model/
 │ │ ├─ __init__.py
 │ │ ├─ interfaces/
-│ │ ├─ item/
+│ │ ├─ game_time/
 │ │ ├─ player/
 | │ └─ before_pattern.drawio
 | |
 │ └─ model_after_pattern/
-│   ├─ item/
+│   ├─ game_time/
 │   ├─ player/
 |   └─ after_pattern.drawio
 | 
