@@ -1,11 +1,10 @@
-# game_time_display.py
-from ..interfaces.i_game_time import GameTimeInterface
-from time_formatter import TimeFormatter
+from ..interfaces import IGameTime
+from .time_formatter import TimeFormatter
 
 class GameTimeDisplay:
     """Decorator that formats and presents a GameTime using a formatter"""
     
-    def __init__(self, game_time: GameTimeInterface, formatter: TimeFormatter):
+    def __init__(self, game_time: IGameTime, formatter: TimeFormatter):
         self.game_time = game_time
         self.formatter = formatter
 

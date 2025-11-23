@@ -1,9 +1,11 @@
 # gametime_interface.py
-from typing import Protocol
+from abc import ABC, abstractmethod
 
-class IGameTime(Protocol):
+class IGameTime(ABC):
     """Abstraction for any GameTime implementation"""
+    @abstractmethod
     def get_hour(self) -> int:
         ...
+    @abstractmethod
     def increase_hour(self) -> None:
         ...

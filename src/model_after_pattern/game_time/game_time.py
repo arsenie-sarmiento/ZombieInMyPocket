@@ -2,9 +2,9 @@
 Game Time Logic (with a Refactored Target Block) for the Zombie in My Pocket game model AFTER PATTERN.
 """
 
-from ..interfaces.i_game_time import GameTimeInterface
+from ..interfaces import IGameTime
 
-class GameTime(GameTimeInterface):
+class GameTime(IGameTime):
     """Concrete GameTime implementation storing current hour"""
     
     def __init__(self, hour: int = 9):

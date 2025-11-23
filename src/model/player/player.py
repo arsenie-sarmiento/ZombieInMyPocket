@@ -4,11 +4,10 @@ Player Logic for the Zombie in My Pocket game model.
 Copied from development/iteration-two branch : src/model/player/player.py
 """
 
-from src.model.interfaces.i_player import IPlayer
-from src.model.interfaces.i_item import IItem
-from src.enums_and_types.types import Position
-from src.model.item.base_item import ConsumableItem
-from src.model.item.combination_engine import CombinationEngine
+from ...enums_and_types.types import Position
+from ..interfaces import IPlayer, IItem
+from ..item.base_item import ConsumableItem
+from ..item.combination_engine import CombinationEngine
 
 class Player(IPlayer):
     """Player iteration-two implementation."""

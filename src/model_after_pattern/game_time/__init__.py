@@ -3,9 +3,9 @@
 This module contains [].
 """
 
-from game_time_display import GameTimeDisplay
-from game_time import GameTime
-from time_formatter import TimeFormatter
+from .game_time_display import GameTimeDisplay
+from .game_time import GameTime
+from .time_formatter import TimeFormatter
 
 __all__ = [
     'GameTime',
