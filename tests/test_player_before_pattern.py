@@ -1,4 +1,4 @@
-# import pytest
+import pytest
 from unittest.mock import MagicMock
 
 from src.model import Player
