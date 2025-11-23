@@ -90,3 +90,60 @@ def test_start_combat_calculate_damage():
     actual_damage_taken = combat.start_combat(player, num_zombies, player_attack, user_choice)
     
     assert actual_damage_taken == expected_damage_taken
+
+@pytest.mark.parametrize(
+    "num_zombies, player_attack, expected",
+    [
+        (5, 2, 3),
+        (3, 5, 0),   # max(num_zombies - player_attack, 0)
+        (10, 10, 0),
+        (7, 3, 4),
+    ]
+)
+def test_calculate_damage_normal(num_zombies, player_attack, expected):
+    """Test normal damage calculation scenarios."""
+    combat = Combat()
+    result = combat.calculate_damage(num_zombies, player_attack)
+    assert result == expected
+
+@pytest.mark.parametrize(
+    "num_zombies",
+    [-1, -5, -10]
+)
+def test_calculate_damage_num_zombies_error(num_zombies):
+    """Test that negative num_zombies raises ValueError."""
+    combat = Combat()
+    with pytest.raises(ValueError, match="Number of zombies must be > 0"):
+        combat.calculate_damage(num_zombies, player_attack=5)
+
+@pytest.mark.parametrize(
+    "player_attack",
+    [0, -1, -10]
+)
+def test_calculate_damage_player_attack_error(player_attack):
+    """Test that non-positive player_attack raises ValueError."""
+    combat = Combat()
+    with pytest.raises(ValueError, match="Players attack must be >= 0"):
+        combat.calculate_damage(num_zombies=5, player_attack=player_attack)
+
+
+
+
+def test_get_combat_options_returns_list():
+    """Test that get_combat_options returns the full list."""
+    combat = Combat()
+    options = combat.get_combat_options()
+    
+    # Verify it returns a list
+    assert isinstance(options, list)
+    
+    # Checking all expected options are present
+    expected_options = ["Cower", "Run Away", "Fight"]
+    assert options == expected_options
+
+def test_get_combat_options_contains_specific_option():
+    """Test that 'Cower' is one of the combat options."""
+    combat = Combat()
+    options = combat.get_combat_options()
+    
+    assert "Cower" in options
