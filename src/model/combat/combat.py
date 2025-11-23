@@ -11,10 +11,8 @@ class Combat(ICombat):
         self.HEAL_HEALTH = 3
         self.RUN_AWAY_DAMAGE = 1
 
-    def start_combat(self, player):
+    def start_combat(self, player, user_choice):
         """Start combat phase."""
-        #*Asks the user if they would like to do which of the cower_options
-        user_choice = "Cower" #Temporary value
         match user_choice:
             case "Cower":
                 return self.handle_cower(player, self.HEAL_HEALTH)
@@ -22,10 +20,12 @@ class Combat(ICombat):
                 self.handle_runaway(player, self.RUN_AWAY_DAMAGE)
                 return
             case "Calculate Damage":
-                return calculate_damage(player)
+                return self.calculate_damage(player)
             case _:
                 raise ValueError(f"Please choose a combat option")
-            
+
+# TODO: player param to use player's actual score
+# make it modular            
     def calculate_damage(self, player, num_zombies, player_attack):
         """Take zombie count and player attack, returns damage to be taken."""
         if num_zombies > 0:
@@ -34,9 +34,9 @@ class Combat(ICombat):
             raise ValueError("Players attack must be >= 0")
         return max(num_zombies - player_attack, 0)
 
-    def handle_cower(self, player):
+    def handle_cower(self, player, user_choice):
         """Player gains 3 health and loses a dev card."""
-        player.heal(self.HEAL_HEALTH)
+        player.heal(user_choice)
         return player
 
     def handle_runaway(self, player, RUN_AWAY_DAMAGE):
