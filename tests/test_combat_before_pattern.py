@@ -16,15 +16,6 @@ class MockPlayer:
         self.damage_taken += amount
         self.health -= amount
 
-    # def get_attack_power(self) -> int:
-        # bonus = sum(item.attack_bonus for item in self._inventory if hasattr(item, 'attack_bonus'))
-        # return self.attack_power + bonus
-
-# def test_get_combat_options():
-#     """
-
-#     """
-
 def test_start_combat_cower():
     """
     Since start_combat hard-codes user_choice='Cower',
