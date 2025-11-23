@@ -1,7 +1,7 @@
 from typing import Final
-# from ..interfaces.combat_strategy import CombatStrategy
+from ..interfaces import CombatStrategy
 
-class CowerStrategy():
+class CowerStrategy(CombatStrategy):
     """"""
 
     HEAL_HEALTH: Final= 3

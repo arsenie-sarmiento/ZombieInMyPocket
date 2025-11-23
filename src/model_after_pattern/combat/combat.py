@@ -1,9 +1,10 @@
 # from typing import Final
-# from ..interfaces.i_combat import ICombat
-# from ..enums.combat_option import CombatOption
-# from src.model_after_pattern.combat.cower_strategy import CowerStrategy
-# from ..interfaces.i_combat import ICombat
-from cower_strategy import CowerStrategy
+# from ..interfaces import CombatStrategy
+from ..enums.combat_option import CombatOption
+from .cower_strategy import CowerStrategy
+from .runaway_strategy import RunAwayStrategy
+from .engage_strategy import EngageStrategy
+
 
 #, CowerStrategy, EngageStrategy, RunAwayStrategy
 class Combat(object):
@@ -13,15 +14,15 @@ class Combat(object):
     HEAL_HEALTH = 3
     RUN_AWAY_DAMAGE = 1
     
-    # def __init__(self, combat_choice: CombatStrategy):
-    #     self.__combat_choice: CombatStrategy = combat_choice
+    def __init__(self, combat_choice):
+        self.__combat_choice = combat_choice
 
-        # # Map enum to strategy instances
-        # self.strategy_map = {
-        #     CombatOption.COWER: CowerStrategy(self.HEAL_HEALTH),
-        #     CombatOption.RUN_AWAY: RunAwayStrategy(self.RUN_AWAY_DAMAGE),
-        #     CombatOption.FIGHT: EngageStrategy()
-        # }
+        # Map enum to strategy instances
+        self.strategy_map = {
+            CombatOption.COWER: CowerStrategy(self.HEAL_HEALTH),
+            CombatOption.RUN_AWAY: RunAwayStrategy(self.RUN_AWAY_DAMAGE),
+            CombatOption.FIGHT: EngageStrategy()
+        }
 
     # def start_combat(self, player, num_zombies, player_attack, user_choice: CombatStrategy):
     #     """Start combat phase using Strategy pattern."""

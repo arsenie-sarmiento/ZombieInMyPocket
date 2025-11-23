@@ -1,4 +1,3 @@
-# gametime_interface.py
 from abc import ABC, abstractmethod
 
 class IGameTime(ABC):

@@ -33,28 +33,31 @@ ZombieInMyPocket/
 │ ├─ model/
 │ │ ├─ __init__.py
 │ │ ├─ interfaces/
+| │ │ ├─ __init__.py
+| │ │ ├─ x
+| │ │ ├─ x
 │ │ ├─ game_time/
+| │ │ ├─ __init__.py
 │ | │ └─ game_time.py
-│ │ ├─ player/
-│ | │ └─ player.py
+│ │ ├─ combat/
+| │ │ ├─ __init__.py
+│ | │ └─ combat.py
 | │ └─ before_pattern.drawio
 | |
 │ └─ model_after_pattern/
+│   ├─ interfaces/
+|   │   ├─ combat_strategy.py
+|   │   └─ __init__().py
 │   ├─ game_time/
-│   ├─ player/
+│   ├─ combat/
 |   └─ after_pattern.drawio
 | 
 ├─ tests/
 │ ├─ __init__.py
-│ ├─ before_pattern/
-| │ │ ├─ item.test.py
-| │ │ ├─ player.test.py
-│ │ └─ __init__.py
-| |
-│ └─ after_pattern/
-| │ │ ├─ item.test.py
-| │ │ ├─ player.test.py
-│ │ └─ __init__.py
+│ ├─ test_game_time_before_pattern.py
+│ ├─ test_game_time_after_pattern.py
+│ ├─ test_combat_before_pattern.py
+│ └─ test_combat_after_pattern.py
 └─ README.md
 ```
 ---
