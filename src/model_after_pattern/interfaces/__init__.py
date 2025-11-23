@@ -8,10 +8,12 @@ players, and game management objects.
 from .i_game_time import IGameTime
 from .i_item import IItem
 from .i_combat import ICombat
+from .i_player import IPlayer
 
 
 __all__ = [
     'IGameTime',
     'IItem',
-    'ICombat'
+    'ICombat',
+    'IPlayer'
 ]

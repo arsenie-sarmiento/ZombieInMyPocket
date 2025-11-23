@@ -16,7 +16,6 @@ class AmPmFormatter(TimeFormatter):
         display_hour = hour if 1 <= hour <= 12 else hour % 12 or 12
         return f"{display_hour:02d}:00{suffix}"
 
-
 class MilitaryFormatter(TimeFormatter):
     """24-hour military formatting"""
     

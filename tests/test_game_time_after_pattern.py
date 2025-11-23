@@ -1,4 +1,4 @@
-from src.model import GameTime
+from src.model_after_pattern import GameTime
 
 def test_initial_time_string():
     game_time = GameTime(9)

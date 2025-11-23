@@ -15,6 +15,5 @@ __all__ = [
     'GameTime',
     'ConsumableItem',
     'CombinationEngine',
-    'Player',
     'Combat'
 ]

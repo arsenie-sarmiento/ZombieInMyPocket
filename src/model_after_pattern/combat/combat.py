@@ -1,15 +1,18 @@
 """Cambat class - Used to handle combat requests from controller. 
 This file has been testing using pylint and achieved a 10/10 for pep8 conformity"""
+
 from ..interfaces.i_combat import ICombat
 
 class Combat(ICombat):
     """Handles combat from the controller."""
+
+    # Class constants
+    COMBAT_OPTIONS = ["Cower", "Run Away", "Fight"]
+    HEAL_HEALTH = 3
+    RUN_AWAY_DAMAGE = 1
+    
     def __init__(self):
         """Initialise Class."""
-        self.COMBAT_OPTIONS = ["Cower", "Run Away", "Fight"]
-        self.RUN_AWAY_DAMAGE = 1
-        self.HEAL_HEALTH = 3
-        self.RUN_AWAY_DAMAGE = 1
 
     def start_combat(self, player, user_choice):
         """Start combat phase."""

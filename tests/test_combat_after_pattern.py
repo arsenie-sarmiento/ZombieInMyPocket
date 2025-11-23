@@ -1,6 +1,6 @@
 import pytest
 
-from src.model import Combat
+from src.model_after_pattern import Combat
 
 class MockPlayer:
     """Mock Player class for testing combat."""
