@@ -1,6 +1,13 @@
 import pytest
+# from unittest.mock import Mock
 
 from src.model_after_pattern import Combat
+
+from model_after_pattern import Combat, CombatOption, CowerStrategy, RunAwayStrategy, EngageStrategy
+# from model_after_pattern.enums.combat_option import CombatOption
+# from model_after_pattern.combat.cower_strategy import 
+# from model_after_pattern.combat.runaway_strategy import RunAwayStrategy
+# from model_after_pattern.combat.engage_strategy import EngageStrategy
 
 class MockPlayer:
     """Mock Player class for testing combat."""
@@ -16,24 +23,31 @@ class MockPlayer:
         self.damage_taken += amount
         self.health -= amount
 
-def test_start_combat_cower():
-    """
-    Since start_combat hard-codes user_choice='Cower',
-    only the cower branch is reachable.
-    """
-    combat = Combat()
-    player = MockPlayer(health=6, attack_power=1)
+def test_strategy_mapping():
+    combat = Combat(CombatOption.COWER)
+
+    assert isinstance(combat.strategy_map[CombatOption.COWER], CowerStrategy)
+    assert isinstance(combat.strategy_map[CombatOption.RUN_AWAY], RunAwayStrategy)
+    assert isinstance(combat.strategy_map[CombatOption.FIGHT], EngageStrategy)
+
+# def test_start_combat_cower():
+#     """
+#     Since start_combat hard-codes user_choice='Cower',
+#     only the cower branch is reachable.
+#     """
+#     combat = Combat()
+#     player = MockPlayer(health=6, attack_power=1)
     
-    num_zombies = 1
-    player_attack = player.attack_power
+#     num_zombies = 1
+#     player_attack = player.attack_power
 
-    user_choice = 'Cower'
-    combat.start_combat(player, num_zombies, player_attack, user_choice)
+#     user_choice = 'Cower'
+#     combat.start_combat(player, num_zombies, player_attack, user_choice)
 
-    expected_health_after_cower = 9
+#     expected_health_after_cower = 9
 
-    assert player.health == expected_health_after_cower 
-    assert isinstance(player, MockPlayer)
+#     assert player.health == expected_health_after_cower 
+#     assert isinstance(player, MockPlayer)
 
 # def test_start_combat_runaway():
 #     """

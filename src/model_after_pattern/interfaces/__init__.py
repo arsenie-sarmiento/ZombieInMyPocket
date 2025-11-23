@@ -6,13 +6,13 @@ players, and game management objects.
 """
 
 # from i_player import IPlayer
-# from i_game_time import IGameTime
 # from i_item import IItem
 # from .i_combat import ICombat
-from combat_strategy import CombatStrategy
+from .i_game_time import IGameTime
+from .combat_strategy import CombatStrategy
 
 __all__ = [
-    # 'IGameTime',
+    'IGameTime',
     # 'IItem',
     # 'ICombat',
     # 'IPlayer',

@@ -1,5 +1,5 @@
-# from .combat_option import CombatOption
+from .combat_option import CombatOption
 
 __all__ = [
-    # "CombatOption"
+    "CombatOption"
 ]
