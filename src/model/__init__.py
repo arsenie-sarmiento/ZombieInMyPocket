@@ -7,7 +7,6 @@ from .interfaces import IItem, IPlayer
 from .game_time import GameTime
 from .item.item_factory import ConsumableItem
 from .item.combination_engine import CombinationEngine
-from .player import Player
 from .combat import Combat
 
 __all__ = [
