@@ -1,4 +1,7 @@
-# gametime.py
+"""
+Game Time Logic (with a Refactored Target Block) for the Zombie in My Pocket game model AFTER PATTERN.
+"""
+
 from ..interfaces.i_game_time import GameTimeInterface
 
 class GameTime(GameTimeInterface):

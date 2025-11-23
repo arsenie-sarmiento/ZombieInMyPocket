@@ -5,11 +5,15 @@ This module contains [].
 
 from .interfaces import IItem, IPlayer
 from .game_time import GameTime
+from .item.item_factory import ConsumableItem
+from .item.combination_engine import CombinationEngine
 from .player import Player
 
 __all__ = [
     'IItem',
     'IPlayer',
     'GameTime',
+    'ConsumableItem',
+    'CombinationEngine',
     'Player'
 ]

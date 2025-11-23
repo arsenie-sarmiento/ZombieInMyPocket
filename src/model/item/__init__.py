@@ -10,10 +10,13 @@ It exposes the main interfaces for working with game items including:
 
 from .item_factory import get_item, get_all_items
 from .combination_engine import combine_items
-
+# from .base_item import ConsumableItem
+# from .combination_engine import CombinationEngine
 
 __all__ = [
     'get_item',
     'get_all_items',
     'combine_items',
+    # 'ConsumableItem',
+    # 'CombinationEngine'
 ]

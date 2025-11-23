@@ -1,3 +1,8 @@
+"""
+Game Time Logic for the Zombie in My Pocket game model BEFORE PATTERN.
+Copied from feature/time-two : src/model/game_time/game_time.py
+"""
+
 class GameTime:
     """Keeps track of game time"""
     _AM = 'AM'

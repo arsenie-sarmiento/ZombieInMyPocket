@@ -1,9 +1,10 @@
-# Copied from development/iteration-two branch : src/model/player/player.py
-from ...model.interfaces.i_player import IPlayer
-from ...model.interfaces.i_item import IItem
-from ...enums_and_types.types import Position
-from ...model.item.base_item import ConsumableItem
-from ...model.item.combination_engine import CombinationEngine
+"""
+AFTER PATTERN
+Player Logic (with a Refactored Target Block) for the Zombie in My Pocket game model.
+"""
+
+from ...model import IPlayer, IItem, ConsumableItem, CombinationEngine
+from ...enums_and_types import Position
 
 class Player(IPlayer):
     """Player iteration-two implementation."""
@@ -24,7 +25,6 @@ class Player(IPlayer):
 
     def take_damage(self, amount: int) -> None:
         """Reduce the player's health by the specified amount."""
-        # End game logic here?
         if amount < 0:
             return
         self._health -= amount
