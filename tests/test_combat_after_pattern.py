@@ -1,13 +1,6 @@
 import pytest
 # from unittest.mock import Mock
-
-from src.model_after_pattern import Combat
-
 from model_after_pattern import Combat, CombatOption, CowerStrategy, RunAwayStrategy, EngageStrategy
-# from model_after_pattern.enums.combat_option import CombatOption
-# from model_after_pattern.combat.cower_strategy import 
-# from model_after_pattern.combat.runaway_strategy import RunAwayStrategy
-# from model_after_pattern.combat.engage_strategy import EngageStrategy
 
 class MockPlayer:
     """Mock Player class for testing combat."""
@@ -30,24 +23,68 @@ def test_strategy_mapping():
     assert isinstance(combat.strategy_map[CombatOption.RUN_AWAY], RunAwayStrategy)
     assert isinstance(combat.strategy_map[CombatOption.FIGHT], EngageStrategy)
 
-# def test_start_combat_cower():
-#     """
-#     Since start_combat hard-codes user_choice='Cower',
-#     only the cower branch is reachable.
-#     """
-#     combat = Combat()
+def test_set_invalid_strategy():
+    combat = Combat(CombatOption.COWER)
+
+    with pytest.raises(ValueError):
+        combat.set_combat_strategy("WRONG_OPTION")
+
+@pytest.mark.parametrize(
+    "num_zombies, player_attack, expected",
+    [
+        (5, 3, 2),
+        (2, 5, 0),
+        (10, 10, 0),
+        (0, 0, 0),
+    ]
+)
+def test_calculate_damage(num_zombies, player_attack, expected):
+    combat = Combat(CombatOption.COWER)
+    assert combat.calculate_damage(num_zombies, player_attack) == expected
+
+def test_calculate_damage_invalid_inputs():
+    combat = Combat(CombatOption.COWER)
+
+    with pytest.raises(ValueError):
+        combat.calculate_damage(-1, 2)
+
+    with pytest.raises(ValueError):
+        combat.calculate_damage(3, -1)
+
+def test_start_combat_executes_strategy_and_applies_damage():
+    combat = Combat(CombatOption.COWER)
+
+    player = MockPlayer(health=6, attack_power=1)
+    result = combat.start_combat(player, num_zombies=4, player_attack=1)
+    assert result is player
+
+# def test_start_combat_runaway_strategy():
+#     combat = Combat(CombatOption.COWER)
 #     player = MockPlayer(health=6, attack_power=1)
+
+#     combat.set_combat_strategy(CombatOption.RUN_AWAY)
+#     combat.start_combat(player, num_zombies=3, player_attack=2)
+#     # player.take_damage.assert_called_once()
+#     # RunAwayStrategy deals fixed damage of RUN_AWAY_DAMAGE
+
+def test_start_combat_cower():
+    """
+    Since start_combat hard-codes user_choice='Cower',
+    only the cower branch is reachable.
+    """
+    combat = Combat()
+    player = MockPlayer(health=6, attack_power=1)
     
-#     num_zombies = 1
-#     player_attack = player.attack_power
+    num_zombies = 1
+    player_attack = player.attack_power
 
-#     user_choice = 'Cower'
-#     combat.start_combat(player, num_zombies, player_attack, user_choice)
+    user_choice = 'Cower'
+    combat.start_combat(player, num_zombies, player_attack, user_choice)
 
-#     expected_health_after_cower = 9
+    expected_health_after_cower = 9
 
-#     assert player.health == expected_health_after_cower 
-#     assert isinstance(player, MockPlayer)
+    assert player.health == expected_health_after_cower 
+    assert isinstance(player, MockPlayer)
 
 # def test_start_combat_runaway():
 #     """

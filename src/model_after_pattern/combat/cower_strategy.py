@@ -9,7 +9,7 @@ class CowerStrategy(CombatStrategy):
     def __init__(self, heal_amount):
         self.heal_amount = heal_amount
 
-    def execute(self):
+    def execute(self, player, **kwargs):
         print(f'hello from cower: {self.heal_amount}')
     # def execute(self, player, **kwargs):
         # print('Cowering, healing')

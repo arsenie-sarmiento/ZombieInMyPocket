@@ -35,6 +35,7 @@ class Combat(object):
         strategy.execute(player)
 
         damage = self.calculate_damage(num_zombies, player_attack)
+        print(f"Damage calculated: {damage}")
         player.take_damage(damage)
         return player
     
