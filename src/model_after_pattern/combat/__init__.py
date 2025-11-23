@@ -1,16 +1,18 @@
 """[AFTER]
 """
 
-from .combat import Combat
-from .combat_action import CombatAction
-from .cower_action import CowerAction
-from .engage_action import EngageAction
-from .runaway_action import RunAwayAction
+# from src.model_after_pattern.interfaces.combat_strategy import CombatStrategy
+# from .combat_main import Combat
+# # from .cower_strategy import CowerStrategy
+# from .cower_strategy import CowerStrategy
 
-__all__ = [
-    'Combat',
-    'CombatAction',
-    'CowerAction',
-    'EngageAction',
-    'RunAwayAction'
-]
+# from .engage_strategy import EngageStrategy
+# from .runaway_strategy import RunAwayStrategy
+
+# __all__ = [
+#     'Combat',
+#     'CombatStrategy',
+#     'CowerStrategy',
+#     'EngageStrategy',
+#     'RunAwayStrategy'
+# ]

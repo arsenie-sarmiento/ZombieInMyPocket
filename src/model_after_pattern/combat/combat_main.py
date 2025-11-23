@@ -1,0 +1,83 @@
+# from typing import Final
+# from ..interfaces.i_combat import ICombat
+# from ..enums.combat_option import CombatOption
+# from src.model_after_pattern.combat.cower_strategy import CowerStrategy
+# from ..interfaces.i_combat import ICombat
+from cower_strategy import CowerStrategy
+
+#, CowerStrategy, EngageStrategy, RunAwayStrategy
+class Combat(object):
+    """REFACTORED Combat (context)"""
+
+    # COMBAT_OPTIONS: Final = ["Cower", "Run Away", "Fight"]
+    HEAL_HEALTH = 3
+    RUN_AWAY_DAMAGE = 1
+    
+    # def __init__(self, combat_choice: CombatStrategy):
+    #     self.__combat_choice: CombatStrategy = combat_choice
+
+        # # Map enum to strategy instances
+        # self.strategy_map = {
+        #     CombatOption.COWER: CowerStrategy(self.HEAL_HEALTH),
+        #     CombatOption.RUN_AWAY: RunAwayStrategy(self.RUN_AWAY_DAMAGE),
+        #     CombatOption.FIGHT: EngageStrategy()
+        # }
+
+    # def start_combat(self, player, num_zombies, player_attack, user_choice: CombatStrategy):
+    #     """Start combat phase using Strategy pattern."""
+
+    #     self.__combat_choice.execute(player)
+    #     print("execute combat")
+        # if user_choice not in self.strategy_map:
+        #     raise ValueError(f"Invalid combat option: {user_choice}")
+
+        # # Execute chosen combat action
+        # strategy = self.strategy_map[user_choice]
+        # strategy.execute(player)
+
+        # # Always calculate damage after action
+        # damage = self.calculate_damage(num_zombies, player_attack)
+        # player.take_damage(damage)
+        # return player
+
+    def calculate_damage(self, num_zombies, player_attack):
+        """Returns damage to be taken after combat action."""
+        if num_zombies < 0:
+            raise ValueError("Number of zombies must be > 0")
+        if player_attack < 0:
+            raise ValueError("Player attack must be >= 0")
+        return max(num_zombies - player_attack, 0)
+
+    # def get_combat_options(self):
+    #     """Return list of combat options as strings."""
+    #     return [option.name for option in CombatOption]
+    
+    # def set_combat_strategy(self, combat_choice):
+    #         self.__combat_choice = combat_choice
+
+if __name__ == '__main__':
+    """
+    The expected output:
+
+    Drive dangerously fast
+    crash and never arrive at all
+    Drive sensibly at a normal speed
+    arrive safely on time
+    Drive reeeallly slowly
+    arrive late and annoy your fellow motorists
+    """
+    print('hi')
+
+    cower = CowerStrategy(1)
+    cower.execute()
+    # fight = EngageStrategy()
+    # run = RunAwayStrategy()
+
+    # combat = Combat(cower)
+    # combat.start_combat()
+
+    # combat.set_combat_strategy(fight)
+    # combat.start_combat()
+
+    # combat.set_combat_strategy(run)
+    # combat.start_combat()

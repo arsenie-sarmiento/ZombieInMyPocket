@@ -9,11 +9,13 @@ from .i_game_time import IGameTime
 from .i_item import IItem
 from .i_combat import ICombat
 from .i_player import IPlayer
+from .combat_strategy import CombatStrategy
 
 
 __all__ = [
     'IGameTime',
     'IItem',
     'ICombat',
-    'IPlayer'
+    'IPlayer',
+    'CombatStrategy'
 ]
