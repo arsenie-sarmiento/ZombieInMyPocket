@@ -1,31 +1,35 @@
 """Cambat class - Used to handle combat requests from controller. 
 This file has been testing using pylint and achieved a 10/10 for pep8 conformity"""
+from typing import Final
 
 from ..interfaces.i_combat import ICombat
+from . import CombatAction, CowerAction, EngageAction, RunAwayAction
 
 class Combat(ICombat):
     """Handles combat from the controller."""
 
-    # Class constants
-    COMBAT_OPTIONS = ["Cower", "Run Away", "Fight"]
-    HEAL_HEALTH = 3
-    RUN_AWAY_DAMAGE = 1
+    COMBAT_OPTIONS: Final = ["Cower", "Run Away", "Fight"]
+    HEAL_HEALTH: Final= 3
+    RUN_AWAY_DAMAGE: Final = 1
     
     def __init__(self):
         """Initialise Class."""
+        pass
 
-    def start_combat(self, player, user_choice):
-        """Start combat phase."""
-        match user_choice:
-            case "Cower":
-                return self.handle_cower(player, self.HEAL_HEALTH)
-            case "Run Away":
-                self.handle_runaway(player, self.RUN_AWAY_DAMAGE)
-                return
-            case "Calculate Damage":
-                return self.calculate_damage(player)
-            case _:
-                raise ValueError(f"Please choose a combat option")
+    def start_combat(self, player, num_zombies, player_attack, user_choice):
+        """Start combat phase with strategy pattern."""
+        action_map = {
+            "Cower": CowerAction(self.HEAL_HEALTH),
+            "Run Away": RunAwayAction(self.RUN_AWAY_DAMAGE),
+            "Fight": EngageAction(player_attack)
+        }
+        if user_choice not in action_map:
+            raise ValueError(f"Invalid combat option: {user_choice}")
+
+        action_result = action_map[user_choice].execute(player)
+        damage_taken = self.calculate_damage(num_zombies, player_attack)
+
+        return action_result, damage_taken
         
     def calculate_damage(self, player, num_zombies):
         """Take zombie count and player attack, returns damage to be taken."""
