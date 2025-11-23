@@ -3,18 +3,15 @@
 This module contains [].
 """
 
-from .interfaces import IGameTime, IItem, IPlayer
+from .interfaces import IGameTime, IItem
 from .game_time import GameTime, GameTimeDisplay, TimeFormatter
-from .player import Player
 from .combat import Combat
 
 __all__ = [
     'IGameTime',
     'IItem',
-    'IPlayer',
     'GameTimeDisplay',
     'GameTime',
     'TimeFormatter',
-    'Player',
     'Combat'
 ]
