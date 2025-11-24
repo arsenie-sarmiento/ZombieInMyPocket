@@ -1,16 +1,16 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
-class GameTimeComponent(ABC):
+class GameTimeComponent(metaclass=ABCMeta):
     """Core Component: Abstract base for GameTime and decorators."""
-    
+
     @abstractmethod
     def get_time(self) -> int:
-        pass
+        raise NotImplementedError("Not implemented")
 
     @abstractmethod
     def increase_time(self) -> None:
-        pass
+        raise NotImplementedError("Not implemented")
 
     @abstractmethod
     def display_time(self) -> str:
-        pass
+        raise NotImplementedError("Not implemented")

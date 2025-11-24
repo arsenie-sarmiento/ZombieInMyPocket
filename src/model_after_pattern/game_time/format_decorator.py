@@ -6,19 +6,26 @@ class FormatDecorator(GameTimeDecorator):
     Extensible for other formatting strategies if needed.
     """
 
-    _AM = "AM"
-    _PM = "PM"
+    AM = "AM"
+    PM = "PM"
 
     def display_time(self) -> str:
         """
-        Returns the time string with AM/PM formatting.
-        Correctly handles 12-hour formatting:
-        - 12:00 → PM
-        - 0:00 → AM
-        - 13:00 → 01:00 PM
+        Return the time in 12-hour format with an AM/PM suffix.
         """
-        hour = self._component.get_time()
-        display_hour = hour % 12 or 12  # convert 0 or 12+ to 12-hour format
-        suffix = self._AM if hour < 12 else self._PM
-        base_time = f"{display_hour:02d}:00"
-        return f"{base_time} {suffix}"
+        hour = self._get_hour()
+        display_hour = self._convert_to_12_hour(hour)
+        suffix = self._get_suffix(hour)
+        return f"{display_hour:02d}:00 {suffix}"
+
+    def _get_hour(self) -> int:
+        """Return the raw hour from the wrapped GameTime component."""
+        return self._component.get_time()
+
+    def _convert_to_12_hour(self, hour: int) -> int:
+        """Convert 24-hour input into 12-hour format."""
+        return hour % 12 or 12
+
+    def _get_suffix(self, hour: int) -> str:
+        """Return AM or PM depending on the hour."""
+        return self.AM if hour < 12 else self.PM

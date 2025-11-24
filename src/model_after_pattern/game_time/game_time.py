@@ -1,3 +1,4 @@
+
 from ..interfaces import GameTimeComponent
 
 class GameTime(GameTimeComponent):
