@@ -1,11 +1,10 @@
 from typing import Final
 from ..enums.combat_option import CombatOption
-from ..interfaces.i_combat import ICombat
 from .cower_strategy import CowerStrategy
 from .runaway_strategy import RunAwayStrategy
 from .engage_strategy import EngageStrategy
 
-class Combat(ICombat):
+class Combat(object):
     """REFACTORED Combat (context)"""
 
     HEAL_HEALTH: Final = 3
