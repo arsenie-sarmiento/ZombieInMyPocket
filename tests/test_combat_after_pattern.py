@@ -1,5 +1,5 @@
 import unittest
-from model_after_pattern import (
+from src.model_after_pattern import (
     Combat,
     CombatOption,
     CombatStrategy,

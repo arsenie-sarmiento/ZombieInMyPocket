@@ -23,16 +23,13 @@ class GameTime:
         """returns the current hour as a string"""
         return f"{self._TIME_DISPLAY_PREFIX}{self._time:02d}{self._TIME_DISPLAY_INFIX}{self._get_am_pm()}"
 
-
-    def get_current_time(self) -> int:
-        """returns the current hour as a number"""
-        return self._time
-
-
     def increase_time(self) -> None:
         """Increases the time by one hour"""
         self._time += self._INCREMENT
 
+    def get_current_time(self) -> int:
+        """returns the current hour as a number"""
+        return self._time
 
     def is_time_valid(self) -> bool:
         """returns True if the current time is between 9 and 12"""
