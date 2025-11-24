@@ -1,6 +1,3 @@
-"""[]
-"""
-
 from .combat import Combat
 
 __all__ = [

@@ -1,6 +1,6 @@
 """Cambat class - Used to handle combat requests from controller. 
 This file has been testing using pylint and achieved a 10/10 for pep8 conformity"""
-from ..interfaces.i_combat import ICombat
+from ..interfaces import ICombat
 
 class Combat(ICombat):
     """Handles combat from the controller."""

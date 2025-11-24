@@ -1,19 +1,9 @@
-"""Package definitions for the Zombie in My Pocket game MODEL BEFORE PATTERN.
-
-This module contains [].
-"""
-
-from .interfaces import IItem, IPlayer
+from .interfaces import ICombat
 from .game_time import GameTime
-from .item.item_factory import ConsumableItem
-from .item.combination_engine import CombinationEngine
 from .combat import Combat
 
 __all__ = [
-    'IItem',
-    'IPlayer',
+    'ICombat',
     'GameTime',
-    'ConsumableItem',
-    'CombinationEngine',
     'Combat'
 ]
