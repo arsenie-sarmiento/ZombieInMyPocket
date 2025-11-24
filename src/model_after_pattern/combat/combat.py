@@ -7,14 +7,12 @@ from .engage_strategy import EngageStrategy
 class Combat(object):
     """REFACTORED Combat (context)"""
 
-    # COMBAT_OPTIONS: Final = ["Cower", "Run Away", "Fight"]
     HEAL_HEALTH: Final = 3
     RUN_AWAY_DAMAGE: Final = 1
     
     def __init__(self, combat_choice):
         self.__combat_choice = combat_choice
 
-        # Map enum to strategy instances
         self.strategy_map = {
             CombatOption.COWER: CowerStrategy(self.HEAL_HEALTH),
             CombatOption.RUN_AWAY: RunAwayStrategy(self.RUN_AWAY_DAMAGE),
