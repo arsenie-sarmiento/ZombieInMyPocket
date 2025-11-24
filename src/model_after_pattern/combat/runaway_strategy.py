@@ -6,9 +6,9 @@ class RunAwayStrategy(CombatStrategy):
     # RUN_AWAY_DAMAGE: Final = 1
 
     def __init__(self, damage):
-        self.damage = damage
+        self._damage = damage
 
     def execute(self, player, zombie_count):
         print('Running away')
-        player.take_damage(self.damage)
+        player.take_damage(self._damage)
         return player
