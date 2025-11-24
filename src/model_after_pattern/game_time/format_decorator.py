@@ -1,34 +1,24 @@
 from .base_decorator import GameTimeDecorator
 
 class FormatDecorator(GameTimeDecorator):
-    """Adds AM/PM formatting to GameTime display."""
-    
+    """
+    Decorator that formats GameTime display with AM/PM.
+    Extensible for other formatting strategies if needed.
+    """
+
     _AM = "AM"
     _PM = "PM"
 
     def display_time(self) -> str:
-        base_time = self._component.display_time()
-        am_pm = self._AM if self._component.get_time() < 12 else self._PM
-        return f"{base_time} {am_pm}"
-
-# class TimeFormatter(ABC):
-#     """Abstraction for time formatting strategies"""
-    
-#     @abstractmethod
-#     def format(self, hour: int) -> str:
-#         pass
-
-
-# class AmPmFormatter(TimeFormatter):
-#     """12-hour AM/PM formatting"""
-    
-#     def format(self, hour: int) -> str:
-#         suffix = "AM" if 0 <= hour < 12 else "PM"
-#         display_hour = hour if 1 <= hour <= 12 else hour % 12 or 12
-#         return f"{display_hour:02d}:00{suffix}"
-
-# class MilitaryFormatter(TimeFormatter):
-#     """24-hour military formatting"""
-    
-#     def format(self, hour: int) -> str:
-#         return f"{hour:02d}:00"
+        """
+        Returns the time string with AM/PM formatting.
+        Correctly handles 12-hour formatting:
+        - 12:00 → PM
+        - 0:00 → AM
+        - 13:00 → 01:00 PM
+        """
+        hour = self._component.get_time()
+        display_hour = hour % 12 or 12  # convert 0 or 12+ to 12-hour format
+        suffix = self._AM if hour < 12 else self._PM
+        base_time = f"{display_hour:02d}:00"
+        return f"{base_time} {suffix}"
