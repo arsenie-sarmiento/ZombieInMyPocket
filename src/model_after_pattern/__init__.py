@@ -1,6 +1,7 @@
 from .game_time import GameTime
 from .combat import Combat, CowerStrategy, RunAwayStrategy, EngageStrategy
 from .enums import CombatOption
+from .interfaces import CombatStrategy
 
 __all__ = [
     'GameTime',
@@ -8,6 +9,7 @@ __all__ = [
     'CowerStrategy',
     'RunAwayStrategy',
     'EngageStrategy',
+    'CombatStrategy',
     'CombatOption'
 ]
 # from .interfaces import CombatStrategy, IGameTime, IItem
