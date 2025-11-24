@@ -1,6 +1,4 @@
 import unittest
-from unittest.mock import patch
-
 from model_after_pattern import (
     Combat,
     CombatOption,
