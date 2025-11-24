@@ -17,17 +17,17 @@ from model_after_pattern import (
 class MockPlayer:
     """Mock Player class for testing combat behavior."""
 
-    def __init__(self, health=6, attack_power=1):
-        self.health = health
-        self.attack_power = attack_power
-        self.damage_taken = 0
+    def __init__(self, health: int = 6, attack_power: int = 1):
+        self.health: int = health
+        self.attack_power: int = attack_power
+        self.damage_taken: int = 0
 
-    def heal(self, amount):
+    def heal(self, amount: int):
         """Increase health by a positive amount."""
         if amount > 0:
             self.health += amount
 
-    def take_damage(self, amount):
+    def take_damage(self, amount: int):
         """Reduce health by a positive amount."""
         if amount > 0:
             self.health -= amount
@@ -149,62 +149,12 @@ class TestDamageCalculation(unittest.TestCase):
                     expected,
                 )
 
-    def test_take_damage_overkill(self):
-        self.player.health = 1
-        self.player.take_damage(15)
-        self.assertEqual(self.player.health, 0)
-        self.assertEqual(self.player.damage_taken, 15)
-
-    # def test_take_damage_negative(self):
-    #     self.player.take_damage(-5)
-    #     self.assertEqual(self.player.health, 10)
-    #     self.assertEqual(self.player.damage_taken, 0)
-
-    # def test_calculate_fight_damage_invalid(self):
-    #     with self.assertRaises(ValueError):
-    #         self.strategy.calculate_damage(-1, 2)
-
-    #     with self.assertRaises(ValueError):
-    #         self.strategy.calculate_damage(3, -1)
-# -------------------------------
-# Tests for MockPlayer itself
-# -------------------------------
-class TestMockPlayer(unittest.TestCase):
-    """Test basic player methods: take_damage and heal."""
-
-    def setUp(self):
-        self.player = MockPlayer(health=6, attack_power=1)
-
-    # def test_calculate_fight_damage_invalid(self):
-    #     with self.assertRaises(ValueError):
-    #         self.strategy.calculate_damage(-1, 2)
-
-    #     with self.assertRaises(ValueError):
-    #         self.strategy.calculate_damage(3, -1)
-
-    # def test_take_damage_positive(self):
-    #     self.player.take_damage(3)
-    #     self.assertEqual(self.player.health, 7)
-    #     self.assertEqual(self.player.damage_taken, 3)
-
     # def test_take_damage_overkill(self):
+    #     self.player.health = 1
     #     self.player.take_damage(15)
     #     self.assertEqual(self.player.health, 0)
     #     self.assertEqual(self.player.damage_taken, 15)
 
-    # def test_take_damage_negative(self):
-    #     self.player.take_damage(-5)
-    #     self.assertEqual(self.player.health, 10)
-    #     self.assertEqual(self.player.damage_taken, 0)
-
-    # def test_heal_positive(self):
-    #     self.player.take_damage(5)
-    #     self.player.heal(3)
-    #     self.assertEqual(self.player.health, 8)
-
-    # def test_heal_negative(self):
-    #     self.player.heal(-3)
-    #     self.assertEqual(self.player.health, 10)
 # =====================================================
 #   Run All Tests
 # =====================================================

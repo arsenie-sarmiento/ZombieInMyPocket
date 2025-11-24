@@ -35,6 +35,17 @@ class Combat(object):
         strategy.execute(player, zombie_count)
         return player
     
+    def handle_damage(self, player, damage):
+        # zombies vs attack score
+        # damage vs health
+
+        # if num_zombies < 0:
+        #     raise ValueError("Number of zombies must be > 0")
+        # if player_attack < 0:
+        #     raise ValueError("Player attack must be >= 0")
+        
+        player.take_damage(damage)
+    
     # def calculate_damage(self, num_zombies, player_attack):
     #     """Returns damage to be taken after combat action."""
     #     if num_zombies < 0:
