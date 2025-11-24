@@ -5,16 +5,10 @@ the contracts for various game components including items, tiles, encounters,
 players, and game management objects.
 """
 
-# from i_player import IPlayer
-# from i_item import IItem
-# from .i_combat import ICombat
-# from .i_game_time import IGameTime
 from .combat_strategy import CombatStrategy
+from .game_time_component import GameTimeComponent
 
 __all__ = [
-    # 'IGameTime',
-    # 'IItem',
-    # 'ICombat',
-    # 'IPlayer',
-    'CombatStrategy'
+    'CombatStrategy',
+    'GameTimeComponent'
 ]
