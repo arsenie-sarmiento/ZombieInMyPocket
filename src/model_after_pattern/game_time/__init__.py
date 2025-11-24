@@ -3,12 +3,14 @@
 This module contains [].
 """
 
-from .game_time_display import GameTimeDisplay
 from .game_time import GameTime
-from .time_formatter import TimeFormatter
+from .format_decorator import FormatDecorator
+from .custom_message_decorator import MessageDecorator
+from .base_decorator import GameTimeDecorator
 
 __all__ = [
     'GameTime',
-    'GameTimeDisplay',
-    'TimeFormatter',
+    'GameTimeDecorator',
+    'FormatDecorator',
+    'MessageDecorator'
 ]

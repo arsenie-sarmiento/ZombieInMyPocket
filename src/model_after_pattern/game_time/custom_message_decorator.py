@@ -1,4 +1,5 @@
 from .base_decorator import GameTimeDecorator
+from ..interfaces import GameTimeComponent
 
 class MessageDecorator(GameTimeDecorator):
     """Adds a custom message to the time display."""
