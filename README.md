@@ -21,36 +21,42 @@ git checkout ass3/portfolio
 ```
 ZombieInMyPocket/
 ├─ .gitignore
-├─ requirements.txt
 ├─ src/
-│ ├─ __init__.py
-│ ├─ enums_and_types/
-│ │ ├─ __init__.py
-│ │ ├─ enums.py
-│ │ ├─ game_over_reason.py
-| │ └─ types.py
-| |
+│ ├─ __init__.py                            [empty]
 │ ├─ model/
-│ │ ├─ __init__.py
-│ │ ├─ interfaces/
-| │ │ ├─ __init__.py
-| │ │ ├─ x
-| │ │ ├─ x
-│ │ ├─ game_time/
+│ │ ├─ game_time/                           [target block's component]
 | │ │ ├─ __init__.py
 │ | │ └─ game_time.py
-│ │ ├─ combat/
+│ │ ├─ combat/                              [target block's component]
 | │ │ ├─ __init__.py
 │ | │ └─ combat.py
-| │ └─ before_pattern.drawio
+│ │ ├─ interfaces/
+| │ │ ├─ i_combat.py
+| │ │ └─ __init__.py
+│ │ ├─ __init__.py
+| │ └─ before_pattern.drawio                [UML Class Diagram]
 | |
-│ └─ model_after_pattern/
+│ └─ model_after_pattern/                   [refactored]
+│   ├─ enums/
+|   │   ├─ combat_option.py
+|   │   └─ __init__().py
 │   ├─ interfaces/
-|   │   ├─ combat_strategy.py
+|   │   ├─ combat_strategy.py               [Strategy]
+|   │   ├─ game_time_component.py           [Component Interface]
 |   │   └─ __init__().py
 │   ├─ game_time/
+|   │   ├─ game_time.py                     [Concrete Component]
+|   │   ├─ base_decorator.py                [Decorator]
+|   │   ├─ custom_message_decorator.py      [Concrete Decorator]
+|   │   ├─ format_decorator.py              [Concrete Decorator]
+|   │   └─ __init__().py
 │   ├─ combat/
-|   └─ after_pattern.drawio
+|   │   ├─ combat.py                        [Context]
+|   │   ├─ cower_strategy.py                [Concrete Strategy]
+|   │   ├─ runaway_strategy.py              [Concrete Strategy]
+|   │   ├─ engage_strategy.py               [Concrete Strategy]
+|   │   └─ __init__().py
+|   └─ after_pattern.drawio                 [UML Class Diagram]
 | 
 ├─ tests/
 │ ├─ __init__.py
