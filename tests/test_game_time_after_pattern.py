@@ -54,8 +54,9 @@ class TestGameTime(unittest.TestCase):
 
     def test_initial_time_string(self):
         game_time = GameTime(9)
-        decorated_time = MessageDecorator(FormatDecorator(game_time), "The time is now")
-        self.assertEqual(decorated_time.display_time(), "The time is now 09:00 AM")
+        custom_message = "The time is now"
+        decorated_time = MessageDecorator(FormatDecorator(game_time), custom_message)
+        self.assertEqual(decorated_time.display_time(), f"{custom_message} 09:00 AM")
 
     def test_get_current_time(self):
         game_time = GameTime(10)
