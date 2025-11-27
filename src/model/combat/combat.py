@@ -1,6 +1,6 @@
 """Cambat class - Used to handle combat requests from controller. 
 This file has been testing using pylint and achieved a 10/10 for pep8 conformity"""
-from ..interfaces import ICombat
+from ..interfaces import i_combat
 
 class Combat(ICombat):
     """Handles combat from the controller."""
@@ -11,8 +11,10 @@ class Combat(ICombat):
         self.HEAL_HEALTH = 3
         self.RUN_AWAY_DAMAGE = 1
 
-    def start_combat(self, player, num_zombies, player_attack, user_choice):
+    def start_combat(self, player):
         """Start combat phase."""
+        #*Asks the user if they would like to do which of the cower_options
+        user_choice = "Cower" #Temporary value
         match user_choice:
             case "Cower":
                 return self.handle_cower(player, self.HEAL_HEALTH)
@@ -20,21 +22,21 @@ class Combat(ICombat):
                 self.handle_runaway(player, self.RUN_AWAY_DAMAGE)
                 return
             case "Calculate Damage":
-                return self.calculate_damage(num_zombies, player_attack)
+                return calculate_damage(player)
             case _:
                 raise ValueError(f"Please choose a combat option")
-
-    def calculate_damage(self, num_zombies, player_attack):
+            
+    def calculate_damage(self, player, num_zombies, player_attack):
         """Take zombie count and player attack, returns damage to be taken."""
-        if num_zombies < 0:
+        if num_zombies > 0:
             raise ValueError("Number of zombies must be > 0")
-        if player_attack <= 0:
+        if player_attack >= 0:
             raise ValueError("Players attack must be >= 0")
         return max(num_zombies - player_attack, 0)
 
-    def handle_cower(self, player, user_choice):
+    def handle_cower(self, player):
         """Player gains 3 health and loses a dev card."""
-        player.heal(user_choice)
+        player.heal(self.HEAL_HEALTH)
         return player
 
     def handle_runaway(self, player, RUN_AWAY_DAMAGE):
