@@ -7,31 +7,8 @@ from src.model_after_pattern import (
     RunAwayStrategy,
     EngageStrategy,
 )
+from tests.mocks.player import MockPlayer
 
-# ---------------------------
-#   Mock Player Class
-# ---------------------------
-class MockPlayer:
-    """Mock Player class for testing combat behavior."""
-
-    def __init__(self, health: int = 6, attack_power: int = 1):
-        self.health: int = health
-        self.attack_power: int = attack_power
-        self.damage_taken: int = 0
-
-    def heal(self, amount: int):
-        """Increase health by a positive amount."""
-        if amount > 0:
-            self.health += amount
-
-    def take_damage(self, amount: int):
-        """Reduce health by a positive amount."""
-        if amount > 0:
-            self.health -= amount
-            self.damage_taken = amount
-
-        if self.health < 0:
-            self.health = 0
 
 # ===============================
 #   Combat Strategy Mapping Tests
@@ -146,6 +123,7 @@ class TestDamageCalculation(unittest.TestCase):
                     self.strategy.calculate_damage(num_zombies, attack),
                     expected,
                 )
+
 # =====================================================
 #   Run All Tests
 # =====================================================
