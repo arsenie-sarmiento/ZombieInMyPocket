@@ -4,10 +4,12 @@ from ..interfaces.combat_strategy import CombatStrategy
 class RunAwayStrategy(CombatStrategy):
     """"""
 
-    def __init__(self, damage):
-        self._damage = damage
+    RUN_AWAY_DAMAGE: Final = 1
 
-    def execute(self, player, zombie_count):
+    def __init__(self):
+        pass
+
+    def execute(self, player):
         print('Running away')
-        player.take_damage(self._damage)
-        return player
+        player.take_damage(self.RUN_AWAY_DAMAGE)
+        return self.get_current_health(player)

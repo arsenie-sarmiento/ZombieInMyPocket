@@ -1,12 +1,15 @@
 # from typing import Final
+from typing import Final
 from ..interfaces import CombatStrategy
 
 class CowerStrategy(CombatStrategy):
     """"""
-    def __init__(self, heal_amount):
-        self._heal_amount = heal_amount
 
-    def execute(self, player, zombie_count):
-        print(f'hello from cower: {self._heal_amount}')
-        player.heal(self._heal_amount)
-        return player
+    HEAL_AMOUNT: Final = 3
+
+    def __init__(self):
+        pass
+    def execute(self, player):
+        print(f'hello from cower: {self.HEAL_AMOUNT}')
+        player.heal(self.HEAL_AMOUNT)
+        return self.get_current_health(player)

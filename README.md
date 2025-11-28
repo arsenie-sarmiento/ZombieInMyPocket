@@ -24,7 +24,7 @@ git checkout ass3/portfolio
 1. Setup
 ```
 pip install coverage
-python -m coverage --version
+coverage --version
 
 pip install pytest pytest-cov
 pytest --cov=your_package
@@ -34,11 +34,11 @@ coverage html
 
 2. Run test
 ```
-python -m coverage run --branch -m unittest .\tests\test_combat_before_pattern.py
-python -m coverage run --branch -m unittest .\tests\test_combat_after_pattern.py
+coverage run --branch -m pytest .\tests\test_combat_before_pattern.py -vvv
+coverage run --branch -m pytest .\tests\test_combat_after_pattern.py -vvv
 
-python -m coverage html
-python -m coverage report -m
+coverage html
+coverage report -m
 
 ```
 
@@ -95,3 +95,4 @@ ZombieInMyPocket/
 ```
 ---
 - *model* -> code before applying pattern
+
