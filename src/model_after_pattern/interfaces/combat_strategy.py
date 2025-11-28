@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class CombatStrategy(ABC):
 
     @abstractmethod
-    def execute(self, player):
+    def execute(self, player, zombie_count):
         pass
 
     def get_current_health(self, player) -> int:

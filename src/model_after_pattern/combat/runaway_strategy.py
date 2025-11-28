@@ -9,7 +9,7 @@ class RunAwayStrategy(CombatStrategy):
     def __init__(self):
         pass
 
-    def execute(self, player):
+    def execute(self, player, zombie_count):
         print('Running away')
         player.take_damage(self.RUN_AWAY_DAMAGE)
         return self.get_current_health(player)

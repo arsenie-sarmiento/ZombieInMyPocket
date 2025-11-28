@@ -8,14 +8,13 @@ class Combat(object):
     """REFACTORED Combat (context)"""
 
     
-    def __init__(self, combat_mode, zombie_count):
+    def __init__(self, combat_mode):
         self.__combat_mode = combat_mode
-        self.__zombie_count = zombie_count
 
         self.strategy_map = {
             CombatOption.COWER: CowerStrategy(),
             CombatOption.RUN_AWAY: RunAwayStrategy(),
-            CombatOption.ENGAGE: EngageStrategy(self.__zombie_count)
+            CombatOption.ENGAGE: EngageStrategy()
         }
 
     def set_combat_strategy(self, combat_mode):
@@ -24,7 +23,7 @@ class Combat(object):
         else:
             self.__combat_mode = combat_mode
 
-    def start_combat(self, player):
+    def start_combat(self, player, zombie_count):
         """Start combat phase using Strategy pattern."""
 
         print(f"Combat mode: {self.__combat_mode.name}")

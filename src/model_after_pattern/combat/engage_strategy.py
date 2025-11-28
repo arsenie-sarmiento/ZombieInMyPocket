@@ -1,15 +1,15 @@
 from ..interfaces.combat_strategy import CombatStrategy
 
 class EngageStrategy(CombatStrategy):
-    def __init__(self, zombie_count):
-        self.__zombie_count = zombie_count
+    def __init__(self):
+        pass
 
-    def execute(self, player):
+    def execute(self, player, zombie_count):
         attack_power = player.attack_power
-        damage = self.calculate_damage(self.__zombie_count, attack_power)
+        damage = self.calculate_damage(zombie_count, attack_power)
         player.take_damage(damage)
 
-        return self.get_current_health(player)
+        return self.get_current_health(player, zombie_count)
     
     def calculate_damage(self, zombie_count: int, player_attack: int):
         """Returns damage to be taken after combat action."""
