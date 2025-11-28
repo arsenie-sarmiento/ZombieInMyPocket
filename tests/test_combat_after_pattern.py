@@ -1,13 +1,14 @@
 import unittest
+from tests.mocks.player import MockPlayer
+from tests.mocks.strategy import MockEngageStrategy
+from src.model_after_pattern.interfaces.combat_strategy import CombatStrategy
 from src.model_after_pattern import (
     Combat,
     CombatOption,
-    CombatStrategy,
     CowerStrategy,
     RunAwayStrategy,
     EngageStrategy,
 )
-from tests.mocks.player import MockPlayer
 
 
 # ===============================
@@ -89,15 +90,6 @@ class TestCombatStart(unittest.TestCase):
         self.assertEqual(self.player.damage_taken, expected_damage)
         self.assertEqual(self.player.health, expected_health)
 
-# ---------------------------
-#   Mock EngageStrategy Class
-# ---------------------------
-
-class MockEngageStrategy(CombatStrategy):
-    def execute(self, player, num_zombies):
-        """"""
-        pass
-
 # ===============================
 #   Take Damage Tests
 # ===============================
@@ -123,6 +115,7 @@ class TestDamageCalculation(unittest.TestCase):
                     self.strategy.calculate_damage(num_zombies, attack),
                     expected,
                 )
+
 
 # =====================================================
 #   Run All Tests
