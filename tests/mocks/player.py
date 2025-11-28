@@ -11,11 +11,13 @@ class MockPlayer(object):
 
     def heal(self, amount: int):
         """Increase health by a positive amount."""
+        print(f'Healing amount: {amount}')
         if amount > 0:
             self.health += amount
 
     def take_damage(self, amount: int):
         """Reduce health by a positive amount."""
+        print(f'Taking damage amount: {amount}')
         if amount > 0:
             self.health -= amount
             self.damage_taken = amount

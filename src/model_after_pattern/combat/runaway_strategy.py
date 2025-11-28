@@ -3,7 +3,6 @@ from ..interfaces.combat_strategy import CombatStrategy
 
 class RunAwayStrategy(CombatStrategy):
     """"""
-    # RUN_AWAY_DAMAGE: Final = 1
 
     def __init__(self, damage):
         self._damage = damage
