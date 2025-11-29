@@ -15,7 +15,7 @@ class TestCombatStart(unittest.TestCase):
     def test_start_combat_cower(self):
         """Test that the Cower strategy increases health."""
         user_choice = "Cower"
-        self.combat.start_combat(self.player, self.num_zombies, self.player_attack, user_choice)
+        self.combat.start_combat(self.player)
         expected_health = 9
         self.assertEqual(self.player.health, expected_health)
         self.assertIsInstance(self.player, MockPlayer)
@@ -23,7 +23,7 @@ class TestCombatStart(unittest.TestCase):
     def test_start_combat_runaway(self):
         """Test that the Run Away strategy decreases health appropriately."""
         user_choice = "Run Away"
-        self.combat.start_combat(self.player, self.num_zombies, self.player_attack, user_choice)
+        self.combat.start_combat(self.player)
         expected_health = 5
         expected_damage_taken = 1
         self.assertEqual(self.player.health, expected_health)
@@ -40,7 +40,7 @@ class TestCombatStart(unittest.TestCase):
         """Test that 'Calculate Damage' option returns correct damage."""
         self.num_zombies = 2
         user_choice = "Calculate Damage"
-        actual_damage = self.combat.start_combat(self.player, self.num_zombies, self.player_attack, user_choice)
+        actual_damage = self.combat.start_combat(self.player)
         expected_damage = 1
         self.assertEqual(actual_damage, expected_damage)
 

@@ -5,6 +5,9 @@ from src.model_after_pattern.interfaces.combat_strategy import CombatStrategy
 from src.model_after_pattern import (
     Combat,
     CombatOption,
+    CowerStrategy,
+    RunAwayStrategy,
+    EngageStrategy
 )
 
 # ===============================
@@ -63,53 +66,53 @@ class TestCombatStart(unittest.TestCase):
 # ===============================
 #   Take Damage Tests
 # ===============================
-# class TestDamageCalculation(unittest.TestCase):
-#     """Tests for the calculate_damage method."""
-#     def setUp(self):
-#         self.player = MockPlayer(health=6, attack_power=1)
-#         self.strategy = MockEngageStrategy()
+class TestDamageCalculation(unittest.TestCase):
+    """Tests for the calculate_damage method."""
+    def setUp(self):
+        self.player = MockPlayer(health=6, attack_power=1)
+        self.strategy = MockEngageStrategy()
 
-#     def test_calculate_fight_damage_valid(self):
-#         cases = [
-#             (5, 3, 2),
-#             (2, 5, 0),
-#             (10, 10, 0),
-#             (0, 0, 0),
-#         ]
+    def test_calculate_fight_damage_valid(self):
+        cases = [
+            (5, 3, 2),
+            (2, 5, 0),
+            (10, 10, 0),
+            (0, 0, 0),
+        ]
 
-#         for num_zombies, attack, expected in cases:
-#             with self.subTest(
-#                 zombies=num_zombies, attack=attack, expected=expected
-#             ):
-#                 self.assertEqual(
-#                     self.strategy.calculate_damage(num_zombies, attack),
-#                     expected,
-#                 )
+        for num_zombies, attack, expected in cases:
+            with self.subTest(
+                zombies=num_zombies, attack=attack, expected=expected
+            ):
+                self.assertEqual(
+                    self.strategy.calculate_damage(num_zombies, attack),
+                    expected,
+                )
 
 # ===============================
 #   Combat Strategy Mapping Tests
 # ===============================
-# class TestCombatStrategies(unittest.TestCase):
-#     """Tests strategy mapping and strategy-setting behavior."""
+class TestCombatStrategies(unittest.TestCase):
+    """Tests strategy mapping and strategy-setting behavior."""
 
-#     def test_strategy_mapping(self):
-#         combat = Combat(CombatOption.COWER)
+    def test_strategy_mapping(self):
+        combat = Combat(CombatOption.COWER)
 
-#         self.assertIsInstance(
-#             combat.strategy_map[CombatOption.COWER], CowerStrategy
-#         )
-#         self.assertIsInstance(
-#             combat.strategy_map[CombatOption.RUN_AWAY], RunAwayStrategy
-#         )
-#         self.assertIsInstance(
-#             combat.strategy_map[CombatOption.ENGAGE], EngageStrategy
-#         )
+        self.assertIsInstance(
+            combat.strategy_map[CombatOption.COWER], CowerStrategy
+        )
+        self.assertIsInstance(
+            combat.strategy_map[CombatOption.RUN_AWAY], RunAwayStrategy
+        )
+        self.assertIsInstance(
+            combat.strategy_map[CombatOption.ENGAGE], EngageStrategy
+        )
 
-#     def test_set_invalid_strategy(self):
-#         combat = Combat(CombatOption.COWER)
+    def test_set_invalid_strategy(self):
+        combat = Combat(CombatOption.COWER)
 
-#         with self.assertRaises(ValueError):
-#             combat.set_combat_strategy("WRONG_OPTION")
+        with self.assertRaises(ValueError):
+            combat.set_combat_strategy("WRONG_OPTION")
 
 # =====================================================
 #   Run All Tests
