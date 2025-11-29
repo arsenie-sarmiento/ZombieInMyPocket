@@ -28,5 +28,5 @@ class Combat(object):
 
         print(f"Combat mode: {self.__combat_mode.name}")
         strategy = self.strategy_map[self.__combat_mode]
-        strategy.execute(player)
+        strategy.execute(player, zombie_count)
         return player

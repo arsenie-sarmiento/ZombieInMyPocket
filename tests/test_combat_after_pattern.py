@@ -15,7 +15,7 @@ class TestCombatStart(unittest.TestCase):
 
     def setUp(self):
         self.player = MockPlayer(health=6, attack_power=2)
-        self.zombie_count = 5
+        self.zombie_count = 3
         self.combat = Combat(CombatOption.COWER)
 
     # -----------------------------------------------------
@@ -49,10 +49,11 @@ class TestCombatStart(unittest.TestCase):
     def test_engage_and_takes_damage(self):
         self.combat.set_combat_strategy(CombatOption.ENGAGE)
 
+
         print(f'Health:{self.player.health}')
 
-        expected_damage = 2
-        expected_health = 4
+        expected_damage = 1 # 3 zombies - 2 AP
+        expected_health = 5 # 6HP - 1 (damage)
 
         self.combat.start_combat(self.player, self.zombie_count)
 
