@@ -25,7 +25,8 @@ class TestCombatStart(unittest.TestCase):
     # Cower Strategy
     # ---------------------------------------------------------
     def test_cower_heals_player(self):
-        """ """
+        """Test that the Cower strategy increases health."""
+
         self.combat.set_combat_strategy(CombatOption.COWER)
         self.combat.start_combat(self.player, self.zombie_count)
 
@@ -37,6 +38,8 @@ class TestCombatStart(unittest.TestCase):
     # Run Away Strategy
     # -----------------------------------------------------
     def test_runaway_takes_damage(self):
+        """Test that the Run Away strategy decreases health appropriately."""
+
         self.combat.set_combat_strategy(CombatOption.RUN_AWAY)
 
         print(f'Health:{self.player.health}')
@@ -50,8 +53,10 @@ class TestCombatStart(unittest.TestCase):
     # Engage Strategy
     # -----------------------------------------------------
     def test_engage_and_takes_damage(self):
-        self.combat.set_combat_strategy(CombatOption.ENGAGE)
+        """Test that the Engage strategy adjusts health."""
 
+        self.combat = Combat(CombatOption.ENGAGE)
+        self.combat.set_combat_strategy(CombatOption.ENGAGE)
 
         print(f'Health:{self.player.health}')
 
@@ -108,11 +113,16 @@ class TestCombatStrategies(unittest.TestCase):
             combat.strategy_map[CombatOption.ENGAGE], EngageStrategy
         )
 
-    def test_set_invalid_strategy(self):
-        combat = Combat(CombatOption.COWER)
+    def test_set_combat_strategy_invalid_option(self):
+        combat = Combat()
 
-        with self.assertRaises(ValueError):
-            combat.set_combat_strategy("WRONG_OPTION")
+        invalid_option = "NOT_A_REAL_OPTION"
+
+        with self.assertRaises(ValueError) as ctx:
+            combat.set_combat_strategy(invalid_option)
+
+        self.assertIn(f"Invalid combat option: {invalid_option}", str(ctx.exception))
+
 
 # =====================================================
 #   Run All Tests

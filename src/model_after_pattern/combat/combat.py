@@ -17,16 +17,15 @@ class Combat(object):
             CombatOption.ENGAGE: EngageStrategy()
         }
 
-    def set_combat_strategy(self, combat_mode):
+    def set_combat_strategy(self, combat_mode) -> None:
         if combat_mode not in self.strategy_map:
             raise ValueError(f"Invalid combat option: {combat_mode}")
         else:
             self.__combat_mode = combat_mode
 
-    def start_combat(self, player, zombie_count):
+    def start_combat(self, player, zombie_count) -> None:
         """Start combat phase using Strategy pattern."""
 
         print(f"Combat mode: {self.__combat_mode.name}")
         strategy = self.strategy_map[self.__combat_mode]
         strategy.execute(player, zombie_count)
-        return player

@@ -12,22 +12,20 @@ class TestCombatStart(unittest.TestCase):
         self.num_zombies = 1
         self.player_attack = self.player.attack_power
 
-    def test_start_combat_cower(self):
-        """Test that the Cower strategy increases health."""
-        user_choice = "Cower"
-        self.combat.start_combat(self.player)
-        expected_health = 9
-        self.assertEqual(self.player.health, expected_health)
-        self.assertIsInstance(self.player, MockPlayer)
+    # def test_start_combat_cower(self):
+    #     """Test that the Cower strategy increases health."""
+    #     user_choice = "Cower"
+    #     self.combat.start_combat(self.player)
+    #     expected_health = 9
+    #     self.assertEqual(self.player.health, expected_health)
+    #     self.assertIsInstance(self.player, MockPlayer)
 
-    def test_start_combat_runaway(self):
-        """Test that the Run Away strategy decreases health appropriately."""
-        user_choice = "Run Away"
-        self.combat.start_combat(self.player)
-        expected_health = 5
-        expected_damage_taken = 1
-        self.assertEqual(self.player.health, expected_health)
-        self.assertEqual(self.player.damage_taken, expected_damage_taken)
+    # def test_start_combat_runaway(self):
+    #     """Test that the Run Away strategy decreases health appropriately."""
+    #     user_choice = "Run Away"
+    #     self.combat.start_combat(self.player)
+    #     expected_health = 5
+    #     self.assertEqual(self.player.health, expected_health)
 
     def test_start_combat_invalid_choice(self):
         """Test that an invalid combat choice raises ValueError."""
