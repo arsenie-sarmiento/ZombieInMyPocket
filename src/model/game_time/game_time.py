@@ -1,8 +1,3 @@
-"""
-Game Time Logic for the Zombie in My Pocket game model BEFORE PATTERN.
-Copied from feature/time-two : src/model/game_time/game_time.py
-"""
-
 class GameTime:
     """Keeps track of game time"""
     _AM = 'AM'
@@ -23,13 +18,16 @@ class GameTime:
         """returns the current hour as a string"""
         return f"{self._TIME_DISPLAY_PREFIX}{self._time:02d}{self._TIME_DISPLAY_INFIX}{self._get_am_pm()}"
 
-    def increase_time(self) -> None:
-        """Increases the time by one hour"""
-        self._time += self._INCREMENT
 
     def get_current_time(self) -> int:
         """returns the current hour as a number"""
         return self._time
+
+
+    def increase_time(self) -> None:
+        """Increases the time by one hour"""
+        self._time += self._INCREMENT
+
 
     def is_time_valid(self) -> bool:
         """returns True if the current time is between 9 and 12"""

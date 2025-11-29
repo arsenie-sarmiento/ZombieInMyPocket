@@ -26,6 +26,6 @@ class Combat(object):
     def start_combat(self, player, zombie_count) -> None:
         """Start combat phase using Strategy pattern."""
 
-        print(f"Combat mode: {self.__combat_mode.name}")
+        # print(f"Combat mode: {self.__combat_mode.name}")
         strategy = self.strategy_map[self.__combat_mode]
         strategy.execute(player, zombie_count)

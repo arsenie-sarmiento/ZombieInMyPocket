@@ -31,7 +31,7 @@ class TestCombatStart(unittest.TestCase):
         """Test that an invalid combat choice raises ValueError."""
         user_choice = "Fly Away"
         with self.assertRaises(ValueError) as cm:
-            self.combat.start_combat(self.player, self.num_zombies, self.player_attack, user_choice)
+            self.combat.start_combat(self.player)
         self.assertIn("Please choose a combat option", str(cm.exception))
 
     def test_start_combat_calculate_damage(self):

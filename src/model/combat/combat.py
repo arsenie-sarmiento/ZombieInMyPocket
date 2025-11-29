@@ -1,6 +1,6 @@
 """Cambat class - Used to handle combat requests from controller. 
 This file has been testing using pylint and achieved a 10/10 for pep8 conformity"""
-from ..interfaces import ICombat
+from ..interfaces import i_combat
 
 class Combat(ICombat):
     """Handles combat from the controller."""
@@ -22,7 +22,7 @@ class Combat(ICombat):
                 self.handle_runaway(player, self.RUN_AWAY_DAMAGE)
                 return
             case "Calculate Damage":
-                return self.calculate_damage(player)
+                return calculate_damage(player)
             case _:
                 raise ValueError(f"Please choose a combat option")
             
