@@ -8,7 +8,7 @@ class Combat(object):
     """REFACTORED Combat (context)"""
 
     
-    def __init__(self, combat_mode):
+    def __init__(self, combat_mode:  CombatOption =  CombatOption.COWER):
         self.__combat_mode = combat_mode
 
         self.strategy_map = {
