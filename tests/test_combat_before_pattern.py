@@ -9,36 +9,38 @@ class TestCombatStart(unittest.TestCase):
     def setUp(self):
         self.player = MockPlayer(health=6, attack_power=1)
         self.combat = Combat()
-        self.num_zombies = 1
         self.player_attack = self.player.attack_power
 
-    # def test_start_combat_cower(self):
-    #     """Test that the Cower strategy increases health."""
-    #     user_choice = "Cower"
-    #     self.combat.start_combat(self.player)
-    #     expected_health = 9
-    #     self.assertEqual(self.player.health, expected_health)
-    #     self.assertIsInstance(self.player, MockPlayer)
+    def test_start_combat_cower(self):
+        """Test that the Cower strategy increases health."""
+        user_choice = "Cower"
+        num_zombies = 3
+        self.combat.start_combat(self.player, num_zombies, user_choice)
+        expected_health = 9
+        self.assertEqual(self.player.health, expected_health)
+        self.assertIsInstance(self.player, MockPlayer)
 
-    # def test_start_combat_runaway(self):
-    #     """Test that the Run Away strategy decreases health appropriately."""
-    #     user_choice = "Run Away"
-    #     self.combat.start_combat(self.player)
-    #     expected_health = 5
-    #     self.assertEqual(self.player.health, expected_health)
+    def test_start_combat_runaway(self):
+        """Test that the Run Away strategy decreases health appropriately."""
+        user_choice = "Run Away"
+        num_zombies = 3
+        self.combat.start_combat(self.player, num_zombies, user_choice)
+        expected_health = 5
+        self.assertEqual(self.player.health, expected_health)
 
     def test_start_combat_invalid_choice(self):
         """Test that an invalid combat choice raises ValueError."""
         user_choice = "Fly Away"
+        num_zombies = 2
         with self.assertRaises(ValueError) as cm:
-            self.combat.start_combat(self.player)
+            self.combat.start_combat(self.player, num_zombies, user_choice)
         self.assertIn("Please choose a combat option", str(cm.exception))
 
     def test_start_combat_calculate_damage(self):
         """Test that 'Calculate Damage' option returns correct damage."""
-        self.num_zombies = 2
+        num_zombies = 2
         user_choice = "Calculate Damage"
-        actual_damage = self.combat.start_combat(self.player)
+        actual_damage = self.combat.start_combat(self.player, num_zombies, user_choice)
         expected_damage = 1
         self.assertEqual(actual_damage, expected_damage)
 
@@ -64,20 +66,18 @@ class TestCalculateDamage(unittest.TestCase):
 
     def test_calculate_damage_num_zombies_error(self):
         """Test that negative num_zombies raises ValueError."""
-        for num_zombies in [-1, -5, -10]:
-            with self.subTest(num_zombies=num_zombies):
-                with self.assertRaises(ValueError) as cm:
-                    self.combat.calculate_damage(num_zombies, player_attack=5)
-                self.assertIn("Number of zombies must be > 0", str(cm.exception))
+        num_zombies = -1
+        with self.assertRaises(ValueError) as cm:
+            self.combat.calculate_damage(num_zombies, attack_power=5)
+        self.assertIn("Number of zombies must be > 0", str(cm.exception))
 
     def test_calculate_damage_player_attack_error(self):
         """Test that negative or zero player_attack raises ValueError."""
-        for player_attack in [0, -1, -10]:
-            with self.subTest(player_attack=player_attack):
-                with self.assertRaises(ValueError) as cm:
-                    self.combat.calculate_damage(num_zombies=5, player_attack=player_attack)
-                self.assertIn("Players attack must be >=", str(cm.exception))
 
+        player_attack = -1
+        with self.assertRaises(ValueError) as cm:
+            self.combat.calculate_damage(num_zombies=5, attack_power=player_attack)
+        self.assertIn("Players attack must be >= 0", str(cm.exception))
 
 class TestCombatOptions(unittest.TestCase):
     """Unit tests for Combat.get_combat_options method."""

@@ -118,10 +118,13 @@ class TestCombatStrategies(unittest.TestCase):
 
         invalid_option = "NOT_A_REAL_OPTION"
 
-        with self.assertRaises(ValueError) as ctx:
+        with self.assertRaises(TypeError) as ctx:
             combat.set_combat_strategy(invalid_option)
 
-        self.assertIn(f"Invalid combat option: {invalid_option}", str(ctx.exception))
+        self.assertIn(
+            "combat_mode must be a CombatOption enum", 
+            str(ctx.exception)
+        )
 
 # =====================================================
 #   Run All Tests

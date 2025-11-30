@@ -23,7 +23,6 @@ class Combat(object):
             raise TypeError(
                 f"combat_mode must be a CombatOption enum, got {type(combat_mode).__name__}"
             )
-
         # --- Validate that this enum value has a mapped strategy ---
         try:
             strategy = self.strategy_map[combat_mode]
@@ -31,9 +30,7 @@ class Combat(object):
             raise ValueError(
                 f"No strategy defined for combat option: {combat_mode}"
             ) from None
-        
         self.__combat_mode = strategy
-            
 
     def start_combat(self, player, zombie_count) -> None:
         """Start combat phase using Strategy pattern."""

@@ -20,26 +20,26 @@ class Combat(ICombat):
                 self.handle_runaway(player, self.RUN_AWAY_DAMAGE)
                 return
             case "Calculate Damage":
-                return self.calculate_damage(player, num_zombies)
+                return self.calculate_damage(num_zombies, player.attack_power)
             case _:
                 raise ValueError(f"Please choose a combat option")
             
-    def calculate_damage(self, player, num_zombies):
+    def calculate_damage(self, num_zombies, attack_power):
         """Take zombie count and player attack, returns damage to be taken."""
         if num_zombies <= 0:
             raise ValueError("Number of zombies must be > 0")
-        if player.attack_power < 0:
+        if attack_power < 0:
             raise ValueError("Players attack must be >= 0")
-        return max(num_zombies - player.attack_power, 0)
+        return max(num_zombies - attack_power, 0)
 
-    def handle_cower(self, player):
+    def handle_cower(self, player, heal_health):
         """Player gains 3 health and loses a dev card."""
-        player.heal(self.HEAL_HEALTH)
+        player.heal(heal_health)
         return player
 
-    def handle_runaway(self, player, RUN_AWAY_DAMAGE):
+    def handle_runaway(self, player, action_damage):
         """Player flees, taking 1 damage and retreating."""
-        player.take_damage(RUN_AWAY_DAMAGE)
+        player.take_damage(action_damage)
         return
 
     def get_combat_options(self):
