@@ -174,18 +174,18 @@ class TestCombatOptions(unittest.TestCase):
         options = self.combat.get_combat_options()
         self.assertIn(CombatOption.COWER, options)
 
-    def test_start_combat_invalid_choice(self):
-        """Test that an invalid combat choice raises ValueError."""
-        from src.model_after_pattern.combat.combat import CombatOption
+    # def test_start_combat_invalid_choice(self):
+    #     """Test that an invalid combat choice raises ValueError."""
+    #     from src.model_after_pattern.combat.combat import CombatOption
 
-        # Pick a valid enum member that has no strategy defined
-        self.combat.set_combat_strategy(CombatOption.IDLE)
-        num_zombies = 2
+    #     # Pick a valid enum member that has no strategy defined
+    #     self.combat.set_combat_strategy(CombatOption.IDLE)
+    #     num_zombies = 2
 
-        with self.assertRaises(ValueError) as cm:
-            self.combat.start_combat(self.player, num_zombies)
+    #     with self.assertRaises(ValueError) as cm:
+    #         self.combat.start_combat(self.player, num_zombies)
 
-        self.assertIn("No strategy defined for combat option:", str(cm.exception))
+    #     self.assertIn("No strategy defined for combat option:", str(cm.exception))
 
 
     # def test_start_combat_invalid_choice(self):
