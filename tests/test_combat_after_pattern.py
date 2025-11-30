@@ -110,6 +110,21 @@ class TestDamageCalculation(unittest.TestCase):
             self.strategy.calculate_damage(zombie_count=5, player_attack=player_attack)
         self.assertIn("Player attack must be >= 0", str(cm.exception))
 
+    def test_calculate_damage_num_zombies_error(self):
+        """Test that negative num_zombies raises ValueError."""
+        num_zombies = -1
+        with self.assertRaises(ValueError) as cm:
+            self.strategy.calculate_damage(num_zombies, player_attack=5)
+        self.assertIn("Number of zombies must be > 0", str(cm.exception))
+
+    def test_calculate_damage_player_attack_error(self):
+        """Test that negative or zero player_attack raises ValueError."""
+
+        player_attack = -1
+        with self.assertRaises(ValueError) as cm:
+            self.strategy.calculate_damage(num_zombies=5, player_attack=player_attack)
+        self.assertIn("Players attack must be >= 0", str(cm.exception))
+        
 # ===============================
 #   Combat Strategy Mapping Tests
 # ===============================
