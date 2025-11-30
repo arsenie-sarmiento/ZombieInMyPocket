@@ -123,7 +123,6 @@ class TestCombatStrategies(unittest.TestCase):
 
         self.assertIn(f"Invalid combat option: {invalid_option}", str(ctx.exception))
 
-
 # =====================================================
 #   Run All Tests
 # =====================================================

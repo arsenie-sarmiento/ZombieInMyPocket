@@ -1,6 +1,5 @@
 from typing import Final
 
-from src.model.player.player import Player
 from ..enums.combat_option import CombatOption
 from .cower_strategy import CowerStrategy
 from .runaway_strategy import RunAwayStrategy
@@ -9,7 +8,7 @@ from .engage_strategy import EngageStrategy
 class Combat(object):
     """REFACTORED Combat (context)"""
 
-    def __init__(self, combat_mode:  CombatOption =  CombatOption.COWER) -> None:
+    def __init__(self, combat_mode = CombatOption.COWER) -> None:
         self.__combat_mode = combat_mode
 
         self.strategy_map: Final = {
@@ -22,10 +21,10 @@ class Combat(object):
         if combat_mode not in self.strategy_map:
             raise ValueError(f"Invalid combat option: {combat_mode}")
         else:
-            self.__combat_mode = combat_mode
+            mapped_combat_mode = self.strategy_map[combat_mode]
+            self.__combat_mode = mapped_combat_mode
 
-    def start_combat(self, player: Player, zombie_count: int) -> None:
+    def start_combat(self, player, zombie_count) -> None:
         """Start combat phase using Strategy pattern."""
 
-        strategy = self.strategy_map[self.__combat_mode]
-        strategy.execute(player, zombie_count)
+        self.__combat_mode.execute(player, zombie_count)
