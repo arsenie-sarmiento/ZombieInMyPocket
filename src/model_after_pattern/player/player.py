@@ -1,5 +1,5 @@
 
-# from src.model.interfaces.i_player import IPlayer
+from ..interfaces.i_player import IPlayer
 # from src.model.interfaces.i_item import IItem
 from src.enums_and_types.types import Position
 # from src.model.item.base_item import ConsumableItem

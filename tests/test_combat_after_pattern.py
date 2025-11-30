@@ -122,8 +122,8 @@ class TestDamageCalculation(unittest.TestCase):
 
         player_attack = -1
         with self.assertRaises(ValueError) as cm:
-            self.strategy.calculate_damage(num_zombies=5, player_attack=player_attack)
-        self.assertIn("Players attack must be >= 0", str(cm.exception))
+            self.strategy.calculate_damage(zombie_count=5, player_attack=player_attack)
+        self.assertIn("Player attack must be >= 0", str(cm.exception))
         
 # ===============================
 #   Combat Strategy Mapping Tests

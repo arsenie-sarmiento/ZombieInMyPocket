@@ -1,5 +1,6 @@
 from typing import Final
 
+from ..player.player import Player
 from ..interfaces.combat_strategy import CombatStrategy
 from ..enums.combat_option import CombatOption
 from .cower_strategy import CowerStrategy
@@ -9,7 +10,7 @@ from .engage_strategy import EngageStrategy
 class Combat(object):
     """REFACTORED Combat (context)"""
 
-    def __init__(self, combat_mode) -> None:
+    def __init__(self, combat_mode = CombatOption.IDLE) -> None:
         self.__combat_mode = combat_mode
 
         self.strategy_map: Final = {
@@ -34,7 +35,7 @@ class Combat(object):
                 ) from None
             self.__combat_mode = strategy
 
-    def start_combat(self, player, zombie_count) -> None:
+    def start_combat(self, player: Player, zombie_count: int) -> None:
         """Start combat phase using Strategy pattern."""
         self.__combat_mode.execute(player, zombie_count)
 
