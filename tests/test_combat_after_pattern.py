@@ -24,7 +24,7 @@ class TestCombatStart(unittest.TestCase):
     # -----------------------------------------------------
     # Cower Strategy
     # ---------------------------------------------------------
-    def test_cower_heals_player(self):
+    def test_start_combat_cower_heals_player(self):
         """Test that the Cower strategy increases health."""
 
         self.combat.set_combat_strategy(CombatOption.COWER)
@@ -37,7 +37,7 @@ class TestCombatStart(unittest.TestCase):
     # -----------------------------------------------------
     # Run Away Strategy
     # -----------------------------------------------------
-    def test_runaway_takes_damage(self):
+    def test_start_combat_run_away_takes_damage(self):
         """Test that the Run Away strategy decreases health appropriately."""
 
         self.combat.set_combat_strategy(CombatOption.RUN_AWAY)
@@ -52,7 +52,7 @@ class TestCombatStart(unittest.TestCase):
     # -----------------------------------------------------
     # Engage Strategy
     # -----------------------------------------------------
-    def test_engage_and_takes_damage(self):
+    def test_start_combat_engage_and_takes_damage(self):
         """Test that the Engage strategy adjusts health."""
 
         self.combat = Combat(CombatOption.ENGAGE)
@@ -87,13 +87,26 @@ class TestDamageCalculation(unittest.TestCase):
 
         for num_zombies, attack, expected in cases:
             with self.subTest(
-                zombies=num_zombies, attack=attack, expected=expected
+                zombies=num_zombies, attack=attack
             ):
-                self.assertEqual(
-                    self.strategy.calculate_damage(num_zombies, attack),
-                    expected,
-                )
+                result = self.strategy.calculate_damage(num_zombies, attack)
+                self.assertEqual(result, expected)
 
+    def test_calculate_damage_num_zombies_error(self):
+        """Test that negative num_zombies raises ValueError."""
+        num_zombies = -1
+        with self.assertRaises(ValueError) as cm:
+            self.strategy.calculate_damage(num_zombies, player_attack=5)
+        self.assertIn("Number of zombies must be > 0", str(cm.exception))
+
+    def test_calculate_damage_player_attack_error(self):
+        """Test that negative or zero player_attack raises ValueError."""
+
+        player_attack = -1
+        with self.assertRaises(ValueError) as cm:
+            self.strategy.calculate_damage(num_zombies=5, player_attack=player_attack)
+        self.assertIn("Players attack must be >= 0", str(cm.exception))
+        
 # ===============================
 #   Combat Strategy Mapping Tests
 # ===============================
