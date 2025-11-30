@@ -8,7 +8,7 @@ from .engage_strategy import EngageStrategy
 class Combat(object):
     """REFACTORED Combat (context)"""
 
-    def __init__(self, combat_mode = CombatOption.COWER) -> None:
+    def __init__(self, combat_mode) -> None:
         self.__combat_mode = combat_mode
 
         self.strategy_map: Final = {
@@ -18,11 +18,22 @@ class Combat(object):
         }
 
     def set_combat_strategy(self, combat_mode: CombatOption) -> None:
-        if combat_mode not in self.strategy_map:
-            raise ValueError(f"Invalid combat option: {combat_mode}")
-        else:
-            mapped_combat_mode = self.strategy_map[combat_mode]
-            self.__combat_mode = mapped_combat_mode
+        # --- Validate type explicitly ---
+        if not isinstance(combat_mode, CombatOption):
+            raise TypeError(
+                f"combat_mode must be a CombatOption enum, got {type(combat_mode).__name__}"
+            )
+
+        # --- Validate that this enum value has a mapped strategy ---
+        try:
+            strategy = self.strategy_map[combat_mode]
+        except KeyError:
+            raise ValueError(
+                f"No strategy defined for combat option: {combat_mode}"
+            ) from None
+        
+        self.__combat_mode = strategy
+            
 
     def start_combat(self, player, zombie_count) -> None:
         """Start combat phase using Strategy pattern."""

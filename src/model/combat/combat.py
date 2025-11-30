@@ -9,7 +9,6 @@ class Combat(ICombat):
         self.COMBAT_OPTIONS = ["Cower", "Run Away", "Fight"]
         self.RUN_AWAY_DAMAGE = 1
         self.HEAL_HEALTH = 3
-        self.RUN_AWAY_DAMAGE = 1
 
     def start_combat(self, player, num_zombies, user_choice):
         """Start combat phase."""

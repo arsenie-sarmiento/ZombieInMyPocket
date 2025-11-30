@@ -114,7 +114,7 @@ class TestCombatStrategies(unittest.TestCase):
         )
 
     def test_set_combat_strategy_invalid_option(self):
-        combat = Combat()
+        combat = Combat(CombatOption.IDLE)
 
         invalid_option = "NOT_A_REAL_OPTION"
 
