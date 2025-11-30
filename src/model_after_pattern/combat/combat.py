@@ -42,7 +42,3 @@ class Combat(object):
     def get_combat_options(self) -> list[str]:
         """Return list containing string of Combat Options."""
         return list(self.strategy_map.keys())
-    
-    def get_current_mode(self) -> CombatStrategy:
-        """Return current combat mode strategy."""
-        return self.__combat_mode

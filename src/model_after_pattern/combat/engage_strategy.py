@@ -17,4 +17,4 @@ class EngageStrategy(CombatStrategy):
             raise ValueError("Player attack must be >= 0")
         
         return max(0, zombie_count - player_attack)
-        
+            

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="evnglcHARrwq_orvKnp9" name="combat_after">
-        <mxGraphModel dx="-306" dy="1693" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1119" dy="2026" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -8,34 +8,33 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="2" value="&amp;lt;&amp;lt;context&amp;gt;&amp;gt;&lt;div&gt;Combat&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="868" y="-839" width="312" height="226" as="geometry"/>
+                    <mxGeometry x="868" y="-839" width="312" height="194" as="geometry"/>
                 </mxCell>
-                <mxCell id="69" value="+ HEAL_HEALTH: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
-                    <mxGeometry y="40" width="312" height="26" as="geometry"/>
+                <mxCell id="74" value="- combat_mode: CombatOption" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" vertex="1" parent="2">
+                    <mxGeometry y="40" width="312" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="+ RUN_AWAY_DAMAGE: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
-                    <mxGeometry y="66" width="312" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="71" value="- stategy_map: dict[Combat Option, Any]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="2">
-                    <mxGeometry y="92" width="312" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="68" value="- combat_mode" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="2" vertex="1">
-                    <mxGeometry y="118" width="312" height="26" as="geometry"/>
+                <mxCell id="73" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-style: normal;&quot;&gt;+ strategy_map: dict[CombatOption,Any]&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" vertex="1" parent="2">
+                    <mxGeometry y="64" width="312" height="24" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="2" vertex="1">
-                    <mxGeometry y="144" width="312" height="8" as="geometry"/>
+                    <mxGeometry y="88" width="312" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="+ __init__(combat_mode): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="2" vertex="1">
-                    <mxGeometry y="152" width="312" height="26" as="geometry"/>
+                    <mxGeometry y="96" width="312" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="63" value="&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;+&amp;nbsp;start_combat(player: Player,&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-style: normal; color: rgb(51, 102, 0);&quot;&gt;zombie_count: int&lt;/font&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;): None&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;fontColor=default;" parent="2" vertex="1">
-                    <mxGeometry y="178" width="312" height="24" as="geometry"/>
+                    <mxGeometry y="122" width="312" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="64" value="&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: rgb(251, 251, 251); float: none; color: rgb(0, 0, 0); display: inline !important;&quot;&gt;+ set_combat_strategy(&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-style: normal; background-color: rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;combat_mode&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: rgb(251, 251, 251); float: none; color: rgb(0, 0, 0); display: inline !important;&quot;&gt;): None&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;fontColor=default;" parent="2" vertex="1">
-                    <mxGeometry y="202" width="312" height="24" as="geometry"/>
+                <mxCell id="75" value="&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: rgb(251, 251, 251); float: none; color: rgb(0, 0, 0); display: inline !important;&quot;&gt;+ set_combat_strategy(&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-style: normal; background-color: rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;combat_mode&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: rgb(251, 251, 251); float: none; color: rgb(0, 0, 0); display: inline !important;&quot;&gt;): None&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;fontColor=default;" vertex="1" parent="2">
+                    <mxGeometry y="146" width="312" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;endSize=16;rounded=0;curved=0;startArrow=open;startFill=0;" parent="1" source="10" target="3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="64" value="+ get_combat_options(): list[str]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;fontColor=default;" parent="2" vertex="1">
+                    <mxGeometry y="170" width="312" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;endSize=16;rounded=0;curved=0;startArrow=open;startFill=0;" parent="1" source="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1180" y="-762.0000000000002" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="56" value="strategy" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="14" vertex="1" connectable="0">
                     <mxGeometry x="0.0691" y="3" relative="1" as="geometry">
@@ -57,74 +56,74 @@
                 <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;rounded=0;curved=0;endArrow=block;endFill=0;endSize=15;" parent="1" source="15" target="10" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
+                            <mxPoint x="1235" y="-581"/>
                             <mxPoint x="1235" y="-623"/>
-                            <mxPoint x="1376" y="-623"/>
+                            <mxPoint x="1316" y="-623"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="15" value="&lt;i&gt;EngageStrategy&lt;/i&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="1111" y="-572" width="248" height="146" as="geometry"/>
+                    <mxGeometry x="950" y="-581" width="325" height="145" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="- damage: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="15" vertex="1">
-                    <mxGeometry y="40" width="248" height="26" as="geometry"/>
+                <mxCell id="76" value="&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="15">
+                    <mxGeometry y="40" width="325" height="25" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="15" vertex="1">
-                    <mxGeometry y="66" width="248" height="8" as="geometry"/>
+                    <mxGeometry y="65" width="325" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="+&amp;nbsp; __init__(damage: int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="15" vertex="1">
-                    <mxGeometry y="74" width="248" height="24" as="geometry"/>
+                    <mxGeometry y="73" width="325" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="+ execute(player: Player, zombie_count: int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="15" vertex="1">
-                    <mxGeometry y="98" width="248" height="24" as="geometry"/>
+                <mxCell id="35" value="+ execute(player: Player, zombie_count: int): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="15" vertex="1">
+                    <mxGeometry y="97" width="325" height="24" as="geometry"/>
                 </mxCell>
                 <mxCell id="70" value="+ &lt;span style=&quot;font-style: normal;&quot;&gt;calculate_damage(zombie_count: int, player_attack: int)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;fontColor=default;" parent="15" vertex="1">
-                    <mxGeometry y="122" width="248" height="24" as="geometry"/>
+                    <mxGeometry y="121" width="325" height="24" as="geometry"/>
                 </mxCell>
                 <mxCell id="19" value="&lt;i&gt;RunawayStrategy&lt;/i&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="1239" y="-396" width="308" height="98" as="geometry"/>
+                    <mxGeometry x="1151" y="-389" width="308" height="98" as="geometry"/>
                 </mxCell>
-                <mxCell id="41" value="- damage: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="19" vertex="1">
+                <mxCell id="41" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ RUN_AWAY_DAMAGE: int&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="19" vertex="1">
                     <mxGeometry y="40" width="308" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="19" vertex="1">
                     <mxGeometry y="66" width="308" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="42" value="+ execute(player: Player, zombie_count: int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="19" vertex="1">
+                <mxCell id="42" value="+ execute(player: Player, zombie_count: int): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="19" vertex="1">
                     <mxGeometry y="74" width="308" height="24" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="&lt;i&gt;CowerStrategy&lt;/i&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="1415" y="-588" width="256" height="122" as="geometry"/>
+                    <mxGeometry x="1347" y="-588" width="317" height="122" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="- heal_amount" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="23" vertex="1">
-                    <mxGeometry y="40" width="256" height="26" as="geometry"/>
+                <mxCell id="37" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ HEAL_AMOUNT: int&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="23" vertex="1">
+                    <mxGeometry y="40" width="317" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="23" vertex="1">
-                    <mxGeometry y="66" width="256" height="8" as="geometry"/>
+                    <mxGeometry y="66" width="317" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="38" value="+&amp;nbsp; __init__(damage: int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="23" vertex="1">
-                    <mxGeometry y="74" width="256" height="24" as="geometry"/>
+                    <mxGeometry y="74" width="317" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="+ execute(player: Player, zombie_count: int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="23" vertex="1">
-                    <mxGeometry y="98" width="256" height="24" as="geometry"/>
+                <mxCell id="39" value="+ execute(player: Player, zombie_count: int): None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2" parent="23" vertex="1">
+                    <mxGeometry y="98" width="317" height="24" as="geometry"/>
                 </mxCell>
                 <mxCell id="28" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;rounded=0;curved=0;endArrow=block;endFill=0;endSize=15;" parent="1" source="23" target="10" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1071" y="-540" as="sourcePoint"/>
                         <mxPoint x="1304" y="-656" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="1552" y="-588"/>
-                            <mxPoint x="1552" y="-622"/>
-                            <mxPoint x="1376" y="-622"/>
+                            <mxPoint x="1472" y="-588"/>
+                            <mxPoint x="1472" y="-622"/>
+                            <mxPoint x="1316" y="-622"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;curved=0;endArrow=block;endFill=0;endSize=15;" parent="1" source="19" target="10" edge="1">
+                <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;curved=0;endArrow=block;endFill=0;endSize=15;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="19" target="10" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1519" y="-601" as="sourcePoint"/>
                         <mxPoint x="1304" y="-656" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="1376" y="-623"/>
-                            <mxPoint x="1376" y="-623"/>
+                            <mxPoint x="1316" y="-389"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
