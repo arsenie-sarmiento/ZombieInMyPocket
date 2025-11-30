@@ -24,7 +24,7 @@ class TestCombatStart(unittest.TestCase):
     # -----------------------------------------------------
     # Cower Strategy
     # ---------------------------------------------------------
-    def test_cower_heals_player(self):
+    def test_start_combat_cower_heals_player(self):
         """Test that the Cower strategy increases health."""
 
         self.combat.set_combat_strategy(CombatOption.COWER)
@@ -37,35 +37,33 @@ class TestCombatStart(unittest.TestCase):
     # -----------------------------------------------------
     # Run Away Strategy
     # -----------------------------------------------------
-    def test_runaway_takes_damage(self):
+    def test_start_combat_run_away_takes_damage(self):
         """Test that the Run Away strategy decreases health appropriately."""
 
         self.combat.set_combat_strategy(CombatOption.RUN_AWAY)
-
-        print(f'Health:{self.player.health}')
+        self.combat.start_combat(self.player, self.zombie_count)
 
         expected_health = 5
+        actual_health = self.player.health
 
-        self.combat.start_combat(self.player, self.zombie_count)
-        self.assertEqual(self.player.health, expected_health)
+        self.assertEqual(actual_health, expected_health)
 
     # -----------------------------------------------------
     # Engage Strategy
     # -----------------------------------------------------
-    def test_engage_and_takes_damage(self):
+    def test_start_combat_engage_and_takes_damage(self):
         """Test that the Engage strategy adjusts health."""
 
         self.combat = Combat(CombatOption.ENGAGE)
         self.combat.set_combat_strategy(CombatOption.ENGAGE)
 
-        print(f'Health:{self.player.health}')
-
         expected_damage = 1 # 3 zombies - 2 AP
         expected_health = 5 # 6HP - 1 (damage)
 
         self.combat.start_combat(self.player, self.zombie_count)
+        actual_damage = self.player.damage_taken   
 
-        self.assertEqual(self.player.damage_taken, expected_damage)
+        self.assertEqual(actual_damage, expected_damage)
         self.assertEqual(self.player.health, expected_health)
 
 # ===============================
@@ -76,8 +74,13 @@ class TestDamageCalculation(unittest.TestCase):
     def setUp(self):
         self.player = MockPlayer(health=6, attack_power=1)
         self.strategy = MockEngageStrategy()
+        # self.combat = Combat(CombatOption.IDLE)
+        # self.combat.set_combat_strategy(CombatOption.ENGAGE)
+        # self.strategy = self.combat.get_current_mode()
 
     def test_calculate_fight_damage_valid(self):
+        """Test normal damage calculation scenarios."""
+
         cases = [
             (5, 3, 2),
             (2, 5, 0),
@@ -85,14 +88,27 @@ class TestDamageCalculation(unittest.TestCase):
             (0, 0, 0),
         ]
 
-        for num_zombies, attack, expected in cases:
+        for zombie_count, attack, expected in cases:
             with self.subTest(
-                zombies=num_zombies, attack=attack, expected=expected
+                zombies=zombie_count, attack=attack
             ):
-                self.assertEqual(
-                    self.strategy.calculate_damage(num_zombies, attack),
-                    expected,
-                )
+                result = self.strategy.calculate_damage(zombie_count, attack)
+                self.assertEqual(result, expected)
+
+    def test_calculate_damage_zombie_count_error(self):
+        """Test that negative zombie_count raises ValueError."""
+        zombie_count = -1
+        with self.assertRaises(ValueError) as cm:
+            self.strategy.calculate_damage(zombie_count, player_attack=5)
+        self.assertIn("Number of zombies must be > 0", str(cm.exception))
+
+    def test_calculate_damage_player_attack_error(self):
+        """Test that negative or zero player_attack raises ValueError."""
+
+        player_attack = -1
+        with self.assertRaises(ValueError) as cm:
+            self.strategy.calculate_damage(zombie_count=5, player_attack=player_attack)
+        self.assertIn("Player attack must be >= 0", str(cm.exception))
 
 # ===============================
 #   Combat Strategy Mapping Tests
