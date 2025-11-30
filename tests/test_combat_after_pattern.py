@@ -75,9 +75,6 @@ class TestDamageCalculation(unittest.TestCase):
     def setUp(self):
         self.player = MockPlayer(health=6, attack_power=1)
         self.strategy = MockEngageStrategy()
-        # self.combat = Combat(CombatOption.IDLE)
-        # self.combat.set_combat_strategy(CombatOption.ENGAGE)
-        # self.strategy = self.combat.get_current_mode()
 
     def test_calculate_fight_damage_valid(self):
         """Test normal damage calculation scenarios."""
