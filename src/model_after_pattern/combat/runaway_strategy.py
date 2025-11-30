@@ -12,4 +12,3 @@ class RunAwayStrategy(CombatStrategy):
     def execute(self, player, zombie_count):
         print('Running away')
         player.take_damage(self.RUN_AWAY_DAMAGE)
-        # return self.get_current_health(player)

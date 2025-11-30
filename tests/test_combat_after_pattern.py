@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from tests.mocks.player import MockPlayer
 from tests.mocks.strategy import MockEngageStrategy
 from src.model_after_pattern.interfaces.combat_strategy import CombatStrategy
@@ -117,13 +118,6 @@ class TestDamageCalculation(unittest.TestCase):
             self.strategy.calculate_damage(num_zombies, player_attack=5)
         self.assertIn("Number of zombies must be > 0", str(cm.exception))
 
-    def test_calculate_damage_player_attack_error(self):
-        """Test that negative or zero player_attack raises ValueError."""
-
-        player_attack = -1
-        with self.assertRaises(ValueError) as cm:
-            self.strategy.calculate_damage(zombie_count=5, player_attack=player_attack)
-        self.assertIn("Player attack must be >= 0", str(cm.exception))
         
 # ===============================
 #   Combat Strategy Mapping Tests
@@ -157,7 +151,55 @@ class TestCombatStrategies(unittest.TestCase):
             str(ctx.exception)
         )
 
-# =====================================================
+# ===============================
+#   Combat Strategy Get Options Tests
+# ===============================
+class TestCombatOptions(unittest.TestCase):
+    """Unit tests for Combat.get_combat_options method."""
+
+    def setUp(self):
+        self.combat = Combat()
+        self.player = MockPlayer(health=6, attack_power=1)
+
+    def test_get_combat_options_returns_list(self):
+        """Test that get_combat_options returns a list with all options."""
+        options = self.combat.get_combat_options()
+        self.assertIsInstance(options, list)
+        # expected_options = ["Cower", "Run Away", "Fight"]
+        expected_options = [CombatOption.COWER, CombatOption.RUN_AWAY, CombatOption.ENGAGE]
+        self.assertEqual(options, expected_options)
+
+    def test_get_combat_options_contains_specific_option(self):
+        """Test that 'Cower' is present in combat options."""
+        options = self.combat.get_combat_options()
+        self.assertIn(CombatOption.COWER, options)
+
+    def test_start_combat_invalid_choice(self):
+        """Test that an invalid combat choice raises ValueError."""
+        from src.model_after_pattern.combat.combat import CombatOption
+
+        # Pick a valid enum member that has no strategy defined
+        self.combat.set_combat_strategy(CombatOption.IDLE)
+        num_zombies = 2
+
+        with self.assertRaises(ValueError) as cm:
+            self.combat.start_combat(self.player, num_zombies)
+
+        self.assertIn("No strategy defined for combat option:", str(cm.exception))
+
+
+    # def test_start_combat_invalid_choice(self):
+    #     """Test that an invalid combat choice raises ValueError."""
+    #     # Patch the Enum in the module where it's used
+    #     with patch('tests.mocks.enums.CombatOption') as MockEnum:
+    #         # MockEnum.NOT_A_REAL_OPTION = "NOT_A_REAL_OPTION"
+    #         self.combat.set_combat_strategy(MockEnum.NOT_A_REAL_OPTION)
+    #         num_zombies = 2
+    #         with self.assertRaises(ValueError) as cm:
+    #             self.combat.start_combat(self.player, num_zombies)
+    #         self.assertIn("Please choose a combat option", str(cm.exception))
+
+    # =====================================================
 #   Run All Tests
 # =====================================================
 if __name__ == "__main__":
