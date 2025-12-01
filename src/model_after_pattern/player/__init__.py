@@ -1,4 +1,3 @@
-# from ..enums import CombatOption
 from ..interfaces import IPlayer
 
 __all__ = [
