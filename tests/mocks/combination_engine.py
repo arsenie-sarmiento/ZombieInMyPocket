@@ -5,7 +5,7 @@ allowing items to be combined for special effects like killing all zombies
 or enhancing weapon capabilities.
 """
 
-from ..interfaces.i_item import IItem
+from .interfaces.i_item import IItem
 from .combination_rules import (
     CombinationRule,
     CombinationResult,

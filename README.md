@@ -37,6 +37,9 @@ coverage html
 coverage run --branch -m pytest .\tests\test_combat_before_pattern.py -vvv
 coverage run --branch -m pytest .\tests\test_combat_after_pattern.py -vvv
 
+coverage run --branch -m pytest .\tests\test_player_before_pattern.py -vvv
+coverage run --branch -m pytest .\tests\test_player_after_pattern.py -vvv
+
 coverage html
 coverage report -m
 
