@@ -6,28 +6,11 @@ and chainsaw + gasoline combinations.
 """
 
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
 from src.enums_and_types import ItemName
 from ..interfaces import IItem
 from .base_item import SpecialWeaponItem
 from .item_config import GASOLINE_CHAINSAW_USES
-
-@dataclass
-class CombinationResult:
-    """Result of combining two items.
-    
-    Attributes:
-        kills_all_zombies: Whether this combination kills all zombies on the tile
-        items_consumed: List of items that are consumed in the combination
-    """
-    kills_all_zombies: bool = False
-    items_consumed: list[IItem] = None
-
-    def __post_init__(self):
-        """Initialize items_consumed to empty list if None."""
-        if self.items_consumed is None:
-            self.items_consumed = []
-
+from .combination_result import CombinationResult
 class CombinationRule(ABC):
     """Abstract base class for item combination rules.
     

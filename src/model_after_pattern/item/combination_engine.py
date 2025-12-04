@@ -76,9 +76,7 @@ class CombinationEngine:
         return (item_a.name in item_b.combinable_with and
                 item_b.name in item_a.combinable_with)
 
-
 _combination_engine = CombinationEngine()
-
 
 def combine_items(item_a: IItem, item_b: IItem) -> bool:
     """Convenience function to combine two items.

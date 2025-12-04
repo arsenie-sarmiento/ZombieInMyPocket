@@ -24,7 +24,6 @@ class TestPlayerItemCombination(unittest.TestCase):
         # Put items in inventory
         player.add_item_to_inventory(item1)
         player.add_item_to_inventory(item2)
-        # player.add_item_to_inventory(item3)
 
         # Attempt combination
         success = player.combine_items_from_inventory()
@@ -32,7 +31,6 @@ class TestPlayerItemCombination(unittest.TestCase):
         self.assertTrue(success)
         self.assertNotIn(item1, player.get_inventory())
         self.assertNotIn(item2, player.get_inventory())
-        # self.assertIn(item3, player.get_inventory())
 
 
 if __name__ == "__main__":
