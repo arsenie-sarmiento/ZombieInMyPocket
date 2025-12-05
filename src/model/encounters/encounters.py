@@ -1,0 +1,2 @@
+class Encounters:
+    pass
