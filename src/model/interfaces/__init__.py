@@ -13,6 +13,7 @@ from .i_tile import ITile
 # from .combat_strategy import CombatStrategy
 from .i_combat import ICombat
 from .i_player import IPlayer
+from .i_encounter import IEncounter
 
 
 __all__ = [
@@ -21,6 +22,7 @@ __all__ = [
     'IGamePieces',
     'ITile',
     'IGameOver',
+    'IEncounter',
     'ICombat',
     'IPlayer'
 ]

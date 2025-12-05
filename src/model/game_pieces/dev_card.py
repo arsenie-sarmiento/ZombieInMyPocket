@@ -1,8 +1,9 @@
 from ..interfaces.i_dev_card import IDevCard
 from ..interfaces.i_item import IItem
+from ..interfaces.i_encounter import IEncounter
 from ..item import get_item
 from src.enums_and_types import ItemName
-from ..encounters.encounters import *
+from ..encounters.encounters import MessageEncounter, ItemEncounter, CombatEncounter, HealthEncounter  
 
 
 class DevCard(IDevCard):
