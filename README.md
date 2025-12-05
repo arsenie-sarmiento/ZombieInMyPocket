@@ -52,12 +52,12 @@ coverage report -m
 ZombieInMyPocket/
 ├─ .gitignore
 ├─ src/
-│ ├─ __init__.py                            [empty]
+│ ├─ __init__.py                             [empty]
 │ ├─ model/
-│ │ ├─ game_time/                           [target block's component]
+│ │ ├─ player/                               [target block's component]
 | │ │ ├─ __init__.py
-│ | │ └─ game_time.py
-│ │ ├─ combat/                              [target block's component]
+│ | │ └─ player.py
+│ │ ├─ combat/                               [target block's component]
 | │ │ ├─ __init__.py
 │ | │ └─ combat.py
 │ │ ├─ interfaces/
@@ -72,10 +72,10 @@ ZombieInMyPocket/
 |   │   └─ __init__().py
 │   ├─ interfaces/
 |   │   ├─ combat_strategy.py               [Strategy]
-|   │   ├─ game_time_component.py           [Component Interface]
+|   │   ├─ player_component.py              [Component Interface]
 |   │   └─ __init__().py
-│   ├─ game_time/
-|   │   ├─ game_time.py                     [Concrete Component]
+│   ├─ player/
+|   │   ├─ player.py                        [Concrete Component]
 |   │   ├─ base_decorator.py                [Decorator]
 |   │   ├─ custom_message_decorator.py      [Concrete Decorator]
 |   │   ├─ format_decorator.py              [Concrete Decorator]
@@ -90,8 +90,8 @@ ZombieInMyPocket/
 | 
 ├─ tests/
 │ ├─ __init__.py
-│ ├─ test_game_time_before_pattern.py
-│ ├─ test_game_time_after_pattern.py
+│ ├─ test_player_before_pattern.py
+│ ├─ test_player_after_pattern.py
 │ ├─ test_combat_before_pattern.py
 │ └─ test_combat_after_pattern.py
 └─ README.md
