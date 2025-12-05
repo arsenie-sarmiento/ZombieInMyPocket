@@ -1,6 +1,7 @@
 from ..interfaces.i_dev_card import IDevCard
 from ..interfaces.i_item import IItem
-from ..item import get_item
+from ..interfaces.i_encounter import IEncounter
+# from ..item import get_item
 from src.enums_and_types import ItemName
 from ..encounters.encounters import *
 

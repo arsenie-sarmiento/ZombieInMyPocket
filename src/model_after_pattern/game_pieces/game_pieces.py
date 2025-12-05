@@ -1,11 +1,5 @@
-# src/game/game_pieces.py
-
-from ..interfaces.i_dev_card import IDevCard
-from ..interfaces.i_game_pieces import IGamePieces
-from ..interfaces.i_tile import ITile
-from ..interfaces.i_game_pieces import IGamePieces
+from ..interfaces import IDevCard, IGamePieces, ITile
 from src.enums_and_types import Direction, Position
-
 
 class GamePieces(IGamePieces):
     def __init__(self, factory: IGamePieces) -> None:
@@ -39,7 +33,7 @@ class GamePieces(IGamePieces):
     def tiles_remaining(self) -> int:
         return self.indoor_tiles_remaining() + self.outdoor_tiles_remaining()
 
-    # ---------------- Delegation to Board ------------------
+    # ---------------- Delegation to Board -----------------
 
     def can_place_tile(self, new_tile: ITile, new_exit: Direction,
                        placed_tile: ITile,

@@ -1,6 +1,6 @@
 from typing import Protocol, Tuple, List
 from . import IDevCard, ITile
-from ..board import Board
+from ..game_pieces.board import Board
 
 class IGamePieces(Protocol):
     """
