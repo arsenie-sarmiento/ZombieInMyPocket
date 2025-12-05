@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch
 from tests.mocks.player import MockPlayer
 from tests.mocks.strategy import MockEngageStrategy
-from src.model_after_pattern.interfaces.combat_strategy import CombatStrategy
+# from src.model_after_pattern.interfaces.combat_strategy import CombatStrategy
 from src.model_after_pattern import (
     Combat,
     CombatOption,

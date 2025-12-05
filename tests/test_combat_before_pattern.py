@@ -1,6 +1,6 @@
 import unittest
 from src.model.combat.combat import Combat
-from tests.mocks import MockPlayer  # Assuming you have MockPlayer defined
+from tests.mocks import MockPlayer
 
 # ===============================
 #   Combat Start Tests

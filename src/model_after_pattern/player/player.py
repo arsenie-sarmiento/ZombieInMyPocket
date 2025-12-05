@@ -1,5 +1,5 @@
-from ..item.item_combination_visitor import ItemCombinationVisitor
-from ..item.combination_engine import CombinationEngine
+# from ..item.item_combination_visitor import ItemCombinationVisitor
+# from ..item.combination_engine import CombinationEngine
 from ..interfaces.i_player import IPlayer
 
 class Player(IPlayer):
@@ -12,19 +12,19 @@ class Player(IPlayer):
         self._has_totem = False
         self._inventory_limit = inventory_limit
 
-        self._combination_engine = CombinationEngine()
-        self._combination_visitor = ItemCombinationVisitor(self._combination_engine)
+        # self._combination_engine = CombinationEngine()
+        # self._combination_visitor = ItemCombinationVisitor(self._combination_engine)
 
-    def combine_items_from_inventory(self) -> bool:
-        result = self._combination_visitor.visit(self._inventory)
+    # def combine_items_from_inventory(self) -> bool:
+    #     result = self._combination_visitor.visit(self._inventory)
 
-        if not result:
-            return False
+    #     if not result:
+    #         return False
 
-        # Only Player applies the mutations to its own inventory
-        for item in result.items_consumed:
-            self.remove_item_from_inventory(item)
+    #     # Only Player applies the mutations to its own inventory
+    #     for item in result.items_consumed:
+    #         self.remove_item_from_inventory(item)
 
-        return True
+    #     return True
 
 
