@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import MagicMock
-from src.game.game_pieces import GamePieces
-from tests.factories.test_game_pieces_factory import TestGamePiecesFactory
-from src.enums_and_types import Direction
+from src.model.game_pieces import GamePieces
+from tests.mocks.game_pieces_factory import TestGamePiecesFactory
+# from src.enums_and_types import Direction
 
 class TestGamePiecesRefactored(unittest.TestCase):
     def setUp(self):

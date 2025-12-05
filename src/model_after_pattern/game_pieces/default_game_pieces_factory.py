@@ -4,11 +4,10 @@ from random import shuffle
 from ..interfaces.i_game_pieces import IGamePiecesFactory
 from ..interfaces.i_dev_card import IDevCard
 from ..interfaces.i_tile import ITile
-from ..board import Board
-from ..dev_card import DevCard
-from ..tile import Tile
+from .board import Board
+from .dev_card import DevCard
+from .tile import Tile
 from src.enums_and_types import Direction
-
 
 class DefaultGamePiecesFactory(IGamePiecesFactory):
 
@@ -21,7 +20,7 @@ class DefaultGamePiecesFactory(IGamePiecesFactory):
         indoor_tiles = Tile.get_indoor_tiles()
         outdoor_tiles = Tile.get_outdoor_tiles()
 
-        # Place the foyer tile (top tile before shuffle)
+        # Placing the foyer tile before shuffle
         foyer = indoor_tiles.pop()
         board.place_tile(
             foyer, 
