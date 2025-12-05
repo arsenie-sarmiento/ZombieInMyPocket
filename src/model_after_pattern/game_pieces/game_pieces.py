@@ -1,32 +1,22 @@
+# src/game/game_pieces.py
+
 from ..interfaces.i_dev_card import IDevCard
 from ..interfaces.i_game_pieces import IGamePieces
 from ..interfaces.i_tile import ITile
-from .tile import Tile
-from .dev_card import DevCard
-from .board import Board
-from src.enums_and_types import *
-from random import shuffle
+from ..interfaces.i_game_pieces import IGamePieces
+from src.enums_and_types import Direction, Position
 
 
 class GamePieces(IGamePieces):
+    def __init__(self, factory: IGamePieces) -> None:
+        (
+            self._board,
+            self._dev_cards,
+            self._indoor_tiles,
+            self._outdoor_tiles
+        ) = factory.create_game_pieces()
 
-    def __init__(self) -> None:
-        self.setup()
-
-    def setup(self) -> None:
-        self._board = Board()
-        self._dev_cards: list[IDevCard] = DevCard.get_dev_cards()
-        self._indoor_tiles: list[ITile] = Tile.get_indoor_tiles()
-        self._outdoor_tiles: list[ITile] = Tile.get_outdoor_tiles()
-
-        # The top card before it is shuffled is the foyer
-        # so add it to the board before we shuffle
-        self._board.place_tile(self._indoor_tiles.pop(), Direction.NORTH,
-                               None, Direction.SOUTH)
-
-        # Shuffle the tiles
-        shuffle(self._indoor_tiles)
-        shuffle(self._outdoor_tiles)
+    # ---------------- Drawing ------------------
 
     def draw_dev_card(self) -> IDevCard:
         return self._dev_cards.pop()
@@ -48,6 +38,8 @@ class GamePieces(IGamePieces):
 
     def tiles_remaining(self) -> int:
         return self.indoor_tiles_remaining() + self.outdoor_tiles_remaining()
+
+    # ---------------- Delegation to Board ------------------
 
     def can_place_tile(self, new_tile: ITile, new_exit: Direction,
                        placed_tile: ITile,

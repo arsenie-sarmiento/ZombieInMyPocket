@@ -7,12 +7,17 @@ players, and game management objects.
 
 from .combat_strategy import CombatStrategy
 # from .game_time_component import GameTimeComponent
-# from .i_item import IItem
 from .i_player import IPlayer
+from .i_encounter import IEncounter
+from .i_dev_card import IDevCard
+from .i_tile import ITile
+from .i_game_pieces import IGamePieces
 
 __all__ = [
     'CombatStrategy',
-    # 'GameTimeComponent',
-    # 'IItem',
+    'IDevCard',
     'IPlayer',
+    'IEncounter',
+    'ITile',
+    'IGamePieces',
 ]
