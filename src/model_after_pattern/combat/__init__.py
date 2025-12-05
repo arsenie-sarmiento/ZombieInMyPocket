@@ -3,8 +3,8 @@ from .engage_strategy import EngageStrategy
 from .runaway_strategy import RunAwayStrategy
 from ..enums import CombatOption
 from .combat import Combat
-from ..player import Player
-from ..interfaces import CombatStrategy
+# from ..player import Player
+from ..interfaces import CombatStrategy, IPlayer
 
 __all__ = [
     "Combat",
@@ -13,5 +13,5 @@ __all__ = [
     "RunAwayStrategy",
     "CombatOption",
     "CombatStrategy",
-    "Player"
+    "IPlayer"
 ]

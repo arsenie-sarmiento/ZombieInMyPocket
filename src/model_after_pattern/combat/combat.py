@@ -1,7 +1,8 @@
 from typing import Final
 
-from ..player.player import Player
-from ..interfaces.combat_strategy import CombatStrategy
+# from ..player.player import Player
+from ..interfaces import IPlayer
+# from ..interfaces.combat_strategy import CombatStrategy
 from ..enums.combat_option import CombatOption
 from .cower_strategy import CowerStrategy
 from .runaway_strategy import RunAwayStrategy
@@ -35,7 +36,7 @@ class Combat(object):
                 ) from None
             self.__combat_mode = strategy
 
-    def start_combat(self, player: Player, zombie_count: int) -> None:
+    def start_combat(self, player: IPlayer, zombie_count: int) -> None:
         """Start combat phase using Strategy pattern."""
         self.__combat_mode.execute(player, zombie_count)
 
