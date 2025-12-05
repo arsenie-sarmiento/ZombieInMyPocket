@@ -10,6 +10,8 @@ from .i_dev_card import IDevCard
 from .i_game_over import IGameOver
 from .i_game_pieces import IGamePieces
 from .i_tile import ITile
+# from .combat_strategy import CombatStrategy
+from .i_combat import ICombat
 from .i_player import IPlayer
 
 
@@ -19,5 +21,6 @@ __all__ = [
     'IGamePieces',
     'ITile',
     'IGameOver',
+    'ICombat',
     'IPlayer'
 ]
