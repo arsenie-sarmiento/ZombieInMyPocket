@@ -4,7 +4,7 @@ from .i_encounter import IEncounter
 
 
 class ITile(ABC):
-
+    """Abstract interface for game tiles."""
     @abstractmethod
     def get_name(self) -> str:
         pass

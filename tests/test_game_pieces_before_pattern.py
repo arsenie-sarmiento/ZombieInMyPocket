@@ -113,6 +113,7 @@ class TestGamePieces(unittest.TestCase):
     def test_is_stuck_returns_true_only_if_board_reports_stuck_and_tiles_remaining(
         self, mock_tile, mock_dev, mock_board
     ):
+        """ Test is_stuck method behavior """
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock()]

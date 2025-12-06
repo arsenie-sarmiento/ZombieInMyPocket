@@ -5,6 +5,7 @@ type TileDict = dict[Position, ITile]
 
 
 class Board:
+    """Concrete implementation of IBoard interface."""
 
     def __init__(self) -> None:
         self._all_tiles: TileDict = {}

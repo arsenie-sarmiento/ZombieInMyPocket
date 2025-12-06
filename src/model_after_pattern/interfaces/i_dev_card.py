@@ -4,7 +4,7 @@ from .i_item import IItem
 
 
 class IDevCard(ABC):
-
+    """Abstract interface for development cards in the game."""
     @abstractmethod
     def get_item(self) -> IItem:
         pass

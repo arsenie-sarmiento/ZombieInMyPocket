@@ -5,6 +5,7 @@ from ..encounters.encounters import HealthEncounter, \
 
 
 class Tile(ITile):
+    """Concrete implementation of ITile interface."""
 
     def __init__(self,
                  name: str,

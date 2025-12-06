@@ -1,8 +1,8 @@
 from ..interfaces import IGamePieces, IGamePiecesFactory, IDevCard, ITile
 from src.enums_and_types import *
-from .board import Board
 
 class GamePieces(IGamePieces):
+    """ The client-facing class for managing game pieces"""
 
     def __init__(self, factory: IGamePiecesFactory) -> None:
         self._factory = factory

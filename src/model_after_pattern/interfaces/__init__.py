@@ -6,13 +6,13 @@ players, and game management objects.
 """
 
 from .combat_strategy import CombatStrategy
-# from .game_time_component import GameTimeComponent
 from .i_player import IPlayer
-from .i_encounter import IEncounter
 from .i_dev_card import IDevCard
 from .i_tile import ITile
 from .i_board import IBoard
 from .i_game_pieces_factory import IGamePiecesFactory
+from .i_game_pieces import IGamePieces
+from .i_encounter import IEncounter
 
 __all__ = [
     'CombatStrategy',
@@ -22,4 +22,5 @@ __all__ = [
     'IBoard',
     'ITile',
     'IGamePiecesFactory',
+    'IGamePieces',
 ]

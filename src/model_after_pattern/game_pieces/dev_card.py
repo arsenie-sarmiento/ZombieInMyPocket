@@ -7,6 +7,7 @@ from ..encounters.encounters import *
 
 
 class DevCard(IDevCard):
+    """Concrete implementation of IDevCard interface."""
 
     def __init__(self, item: IItem,
                  encounter_9pm: IEncounter,

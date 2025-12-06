@@ -6,6 +6,7 @@ from src.model.game_pieces.board import TileDict
 from src.model_after_pattern.interfaces.i_tile import ITile
 
 class IBoard(ABC):
+    """Abstract interface of the Board component."""
 
     @abstractmethod
     def reset(self):
