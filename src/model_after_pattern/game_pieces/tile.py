@@ -1,6 +1,6 @@
 from src.enums_and_types import *
-from ..interfaces.i_tile import ITile
-from ..encounters.encounters import IEncounter, HealthEncounter, \
+from ..interfaces.i_tile import ITile, IEncounter
+from ..encounters.encounters import HealthEncounter, \
      ItemEncounter, TotemEncounter
 
 

@@ -19,10 +19,12 @@ class GamePieces(IGamePieces):
         self._indoor_tiles: list[ITile] = Tile.get_indoor_tiles()
         self._outdoor_tiles: list[ITile] = Tile.get_outdoor_tiles()
 
-        # The top card before it is shuffled is the foyer
-        # so add it to the board before we shuffle
-        self._board.place_tile(self._indoor_tiles.pop(), Direction.NORTH,
-                               None, Direction.SOUTH)
+        self._board.place_tile(
+            self._indoor_tiles.pop(),
+            Direction.NORTH,
+            None, 
+            Direction.SOUTH
+        )
 
         # Shuffle the tiles
         shuffle(self._indoor_tiles)

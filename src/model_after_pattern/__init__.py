@@ -1,6 +1,5 @@
-# from .game_time import GameTime, GameTimeDecorator, FormatDecorator, MessageDecorator
 from .combat import Combat, CowerStrategy, RunAwayStrategy, EngageStrategy
-from .interfaces import CombatStrategy # , GameTimeComponent
+from .interfaces import CombatStrategy
 from .enums import CombatOption
 
 __all__ = [
@@ -10,9 +9,4 @@ __all__ = [
     'CowerStrategy',
     'RunAwayStrategy',
     'EngageStrategy',
-    # 'GameTime',
-    # 'GameTimeComponent',
-    # 'GameTimeDecorator',
-    # 'FormatDecorator',
-    # 'MessageDecorator'
 ]
