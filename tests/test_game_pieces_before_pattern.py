@@ -13,7 +13,6 @@ class TestGamePieces(unittest.TestCase):
     def test_setup_places_foyer_tile_before_shuffle(
         self, mock_tile, mock_dev, mock_board, mock_shuffle
     ):
-        # Arrange
         indoor = [MagicMock(name="T1"), MagicMock(name="T2")]
         outdoor = [MagicMock(name="O1")]
         dev = [MagicMock(name="D1")]
@@ -25,25 +24,20 @@ class TestGamePieces(unittest.TestCase):
         board_instance = MagicMock()
         mock_board.return_value = board_instance
 
-        # Act
         GamePieces()
 
-        # Assert: foyer tile is the LAST item of indoor list (pop)
         foyer_tile = indoor[-1]
         board_instance.place_tile.assert_called_once_with(
             foyer_tile, Direction.NORTH, None, Direction.SOUTH
         )
 
-        # Assert: shuffle called after foyer placement
         self.assertEqual(mock_shuffle.call_count, 2)
-
 
     # -------------------------------------------------------------------------
     @patch("src.model.game_pieces.game_pieces.Board")
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_dev_card_draw_reduces_count(self, mock_tile, mock_dev, mock_board):
-        # Arrange
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock(), MagicMock()]
@@ -52,19 +46,15 @@ class TestGamePieces(unittest.TestCase):
         gp = GamePieces()
         before = gp.dev_cards_remaining()
 
-        # Act
         gp.draw_dev_card()
 
-        # Assert
         self.assertEqual(gp.dev_cards_remaining(), before - 1)
-
 
     # -------------------------------------------------------------------------
     @patch("src.model.game_pieces.game_pieces.Board")
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_indoor_tile_draw_reduces_count(self, mock_tile, mock_dev, mock_board):
-        # Arrange
         tiles = [MagicMock(), MagicMock(), MagicMock()]
         mock_tile.get_indoor_tiles.return_value = tiles.copy()
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
@@ -74,19 +64,15 @@ class TestGamePieces(unittest.TestCase):
         gp = GamePieces()
         before = gp.indoor_tiles_remaining()
 
-        # Act
         gp.draw_indoor_tile()
 
-        # Assert
         self.assertEqual(gp.indoor_tiles_remaining(), before - 1)
-
 
     # -------------------------------------------------------------------------
     @patch("src.model.game_pieces.game_pieces.Board")
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_outdoor_tile_draw_reduces_count(self, mock_tile, mock_dev, mock_board):
-        # Arrange
         mock_tile.get_outdoor_tiles.return_value = [MagicMock(), MagicMock()]
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock()]
@@ -95,19 +81,15 @@ class TestGamePieces(unittest.TestCase):
         gp = GamePieces()
         before = gp.outdoor_tiles_remaining()
 
-        # Act
         gp.draw_outdoor_tile()
 
-        # Assert
         self.assertEqual(gp.outdoor_tiles_remaining(), before - 1)
-
 
     # -------------------------------------------------------------------------
     @patch("src.model.game_pieces.game_pieces.Board")
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_place_tile_delegates_to_board(self, mock_tile, mock_dev, mock_board):
-        # Arrange
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock()]
@@ -116,16 +98,13 @@ class TestGamePieces(unittest.TestCase):
 
         gp = GamePieces()
 
-        # Act
         tileA = MagicMock()
         tileB = MagicMock()
         gp.place_tile(tileA, Direction.NORTH, tileB, Direction.SOUTH)
 
-        # Assert
         board_instance.place_tile.assert_called_with(
             tileA, Direction.NORTH, tileB, Direction.SOUTH
         )
-
 
     # -------------------------------------------------------------------------
     @patch("src.model.game_pieces.game_pieces.Board")
@@ -134,7 +113,6 @@ class TestGamePieces(unittest.TestCase):
     def test_is_stuck_returns_true_only_if_board_reports_stuck_and_tiles_remaining(
         self, mock_tile, mock_dev, mock_board
     ):
-        # Arrange
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock()]
@@ -144,15 +122,12 @@ class TestGamePieces(unittest.TestCase):
         gp = GamePieces()
         board_instance.is_stuck.return_value = True
 
-        # Act + Assert
         self.assertTrue(gp.is_stuck())
 
-        # Case 2: No tiles left → should be False
         gp._indoor_tiles.clear()
         gp._outdoor_tiles.clear()
 
         self.assertFalse(gp.is_stuck())
-
 
 if __name__ == "__main__":
     unittest.main()
