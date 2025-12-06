@@ -3,7 +3,6 @@ from unittest.mock import MagicMock, patch
 from src.model.game_pieces.game_pieces import GamePieces
 from src.enums_and_types import Direction
 
-
 class TestGamePieces(unittest.TestCase):
 
     @patch("src.model.game_pieces.game_pieces.shuffle")
@@ -13,6 +12,7 @@ class TestGamePieces(unittest.TestCase):
     def test_setup_places_foyer_tile_before_shuffle(
         self, mock_tile, mock_dev, mock_board, mock_shuffle
     ):
+        """Test that the foyer tile is placed before shuffling the indoor tiles."""
         indoor = [MagicMock(name="T1"), MagicMock(name="T2")]
         outdoor = [MagicMock(name="O1")]
         dev = [MagicMock(name="D1")]
@@ -38,6 +38,7 @@ class TestGamePieces(unittest.TestCase):
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_dev_card_draw_reduces_count(self, mock_tile, mock_dev, mock_board):
+        """ Test that drawing a dev card reduces the count of remaining dev cards """
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock(), MagicMock()]
@@ -55,6 +56,7 @@ class TestGamePieces(unittest.TestCase):
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_indoor_tile_draw_reduces_count(self, mock_tile, mock_dev, mock_board):
+        """ Test that drawing an indoor tile reduces the count of remaining indoor tiles """
         tiles = [MagicMock(), MagicMock(), MagicMock()]
         mock_tile.get_indoor_tiles.return_value = tiles.copy()
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
@@ -73,6 +75,7 @@ class TestGamePieces(unittest.TestCase):
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_outdoor_tile_draw_reduces_count(self, mock_tile, mock_dev, mock_board):
+        """ Test that drawing an outdoor tile reduces the count of remaining outdoor tiles """
         mock_tile.get_outdoor_tiles.return_value = [MagicMock(), MagicMock()]
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock()]
@@ -90,6 +93,7 @@ class TestGamePieces(unittest.TestCase):
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
     def test_place_tile_delegates_to_board(self, mock_tile, mock_dev, mock_board):
+        """ Test that place_tile method delegates to the Board's place_tile method """
         mock_tile.get_indoor_tiles.return_value = [MagicMock()]
         mock_tile.get_outdoor_tiles.return_value = [MagicMock()]
         mock_dev.get_dev_cards.return_value = [MagicMock()]
@@ -110,7 +114,7 @@ class TestGamePieces(unittest.TestCase):
     @patch("src.model.game_pieces.game_pieces.Board")
     @patch("src.model.game_pieces.game_pieces.DevCard")
     @patch("src.model.game_pieces.game_pieces.Tile")
-    def test_is_stuck_returns_true_only_if_board_reports_stuck_and_tiles_remaining(
+    def test_is_stuck_combines_board_state_and_tile_counts(
         self, mock_tile, mock_dev, mock_board
     ):
         """ Test is_stuck method behavior """

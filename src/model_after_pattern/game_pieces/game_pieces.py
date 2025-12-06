@@ -15,18 +15,23 @@ class GamePieces(IGamePieces):
         self._indoor_tiles = self._factory.create_indoor_tiles()
         self._outdoor_tiles = self._factory.create_outdoor_tiles()
 
-        # Place the foyer tile (top indoor tile before shuffling)
-        foyer_tile = self._indoor_tiles.pop()
-        self._board.place_tile(
-            foyer_tile,
-            Direction.NORTH,
-            None,
-            Direction.SOUTH
-        )
+        if self._indoor_tiles:
+            # Place the foyer tile (top indoor tile before shuffling)
+            foyer_tile = self._indoor_tiles.pop()
+            self._board.place_tile(
+                foyer_tile,
+                Direction.NORTH,
+                None,
+                Direction.SOUTH
+            )
 
-        # Shuffle via factory abstraction
-        self._factory.shuffle_tiles(self._indoor_tiles)
-        self._factory.shuffle_tiles(self._outdoor_tiles)
+            # Shuffle via factory abstraction
+            self._factory.shuffle_tiles(self._indoor_tiles)
+            self._factory.shuffle_tiles(self._outdoor_tiles)
+
+        else:
+            # No indoor tiles, skipping placement & shuffle
+            pass
 
     def draw_dev_card(self) -> IDevCard:
         return self._dev_cards.pop()

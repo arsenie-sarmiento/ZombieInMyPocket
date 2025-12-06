@@ -1,15 +1,18 @@
 import unittest
 from unittest.mock import MagicMock
-from src.model.game_pieces.game_pieces import GamePieces
+from src.model_after_pattern.game_pieces.game_pieces import GamePieces
 from src.enums_and_types import Direction
 
-
+# ===============================
+#   Game Pieces Setup Tests
+# ===============================
 class TestGamePiecesSetup(unittest.TestCase):
 
     # ----------------------------------------------------------------------
-    # SCENARIO 1 — Setup pulls objects from factory
+    # Setup pulls objects from factory
     # ----------------------------------------------------------------------
     def test_setup_uses_factory_to_create_objects(self):
+        """ Test that setup uses the factory to create game pieces """
         factory = MagicMock()
 
         # Mock returns
@@ -27,9 +30,10 @@ class TestGamePiecesSetup(unittest.TestCase):
         factory.create_outdoor_tiles.assert_called_once()
 
     # ----------------------------------------------------------------------
-    # SCENARIO 2 — Foyer tile is placed correctly
+    # Foyer tile is placed correctly
     # ----------------------------------------------------------------------
     def test_foyer_tile_is_popped_and_placed(self):
+        """ Test that the foyer tile is popped and placed correctly """
         factory = MagicMock()
 
         # Create a controlled indoor tile list
@@ -55,9 +59,10 @@ class TestGamePiecesSetup(unittest.TestCase):
         )
 
     # ----------------------------------------------------------------------
-    # SCENARIO 3 — Remaining tiles are shuffled
+    # Remaining tiles are shuffled
     # ----------------------------------------------------------------------
     def test_tiles_are_shuffled(self):
+        """ Test that the indoor and outdoor tiles are shuffled """
         factory = MagicMock()
 
         indoor_tiles = [MagicMock(), MagicMock(), MagicMock()]
@@ -82,9 +87,10 @@ class TestGamePiecesSetup(unittest.TestCase):
         self.assertEqual(len(shuffled_outdoor), 2)
 
     # ----------------------------------------------------------------------
-    # SCENARIO 4 — Indoor/outdoor/dev card lists are stored correctly
+    # Indoor/outdoor/dev card lists are stored correctly
     # ----------------------------------------------------------------------
     def test_lists_are_saved_to_gamepieces(self):
+        """ Test that the lists are saved correctly in GamePieces """
         factory = MagicMock()
 
         dev_cards = [MagicMock(), MagicMock()]
@@ -104,26 +110,149 @@ class TestGamePiecesSetup(unittest.TestCase):
         self.assertEqual(gp.outdoor_tiles_remaining(), 1)
 
     # ----------------------------------------------------------------------
-    # SCENARIO 5 — Setup still works with zero tiles (edge case)
+    # Setup still works with zero tiles (edge case)
     # ----------------------------------------------------------------------
     def test_setup_handles_empty_tile_lists(self):
+        """ Handles setup for empty indoor/outdoor tiles sets """
         factory = MagicMock()
 
-        factory.create_board.return_value = MagicMock()
+        board_instance = MagicMock()
+        factory.create_board.return_value = board_instance
+
         factory.create_dev_cards.return_value = []
         factory.create_indoor_tiles.return_value = []   # No foyer tile
         factory.create_outdoor_tiles.return_value = []
 
-        # No crash expected
+        # Should not crash
         gp = GamePieces(factory)
 
-        # Board.place_tile should NEVER be called since no foyer tile exists
-        factory.create_board.return_value.place_tile.assert_not_called()
+        # No foyer tile => place_tile must NOT be called
+        board_instance.place_tile.assert_not_called()
 
         self.assertEqual(gp.indoor_tiles_remaining(), 0)
         self.assertEqual(gp.outdoor_tiles_remaining(), 0)
         self.assertEqual(gp.dev_cards_remaining(), 0)
 
+    # ----------------------------------------------------------------------
+    # Drawing dev cards reduces counts
+    # ----------------------------------------------------------------------
+    def test_dev_card_draw_reduces_count(self):
+        """ Test that drawing a dev card reduces the count of remaining dev cards """
+        factory = MagicMock()
+
+        factory.create_board.return_value = MagicMock()
+        factory.create_indoor_tiles.return_value = [MagicMock()]
+        factory.create_outdoor_tiles.return_value = [MagicMock()]
+        factory.create_dev_cards.return_value = [MagicMock(), MagicMock()]
+
+        gp = GamePieces(factory)
+        before = gp.dev_cards_remaining()
+
+        gp.draw_dev_card()
+
+        self.assertEqual(gp.dev_cards_remaining(), before - 1)
+
+    # ----------------------------------------------------------------------
+    # Drawing indoor tiles reduces counts
+    # ----------------------------------------------------------------------
+    def test_indoor_tile_draw_reduces_count(self):
+        """ Test that drawing an indoor tile reduces the count of remaining indoor tiles """
+        factory = MagicMock()
+
+        tiles = [MagicMock(), MagicMock(), MagicMock()]
+
+        factory.create_board.return_value = MagicMock()
+        factory.create_outdoor_tiles.return_value = [MagicMock()]
+        factory.create_dev_cards.return_value = [MagicMock()]
+        factory.create_indoor_tiles.return_value = tiles.copy()
+
+        gp = GamePieces(factory)
+        before = gp.indoor_tiles_remaining()
+
+        gp.draw_indoor_tile()
+
+        self.assertEqual(gp.indoor_tiles_remaining(), before - 1)
+
+    # ----------------------------------------------------------------------
+    # Drawing outdoor tiles reduces counts
+    # ----------------------------------------------------------------------
+    def test_outdoor_tile_draw_reduces_count(self):
+        """ Test that drawing an outdoor tile reduces the count of remaining outdoor tiles """
+        factory = MagicMock()
+
+        factory.create_board.return_value = MagicMock()
+        factory.create_indoor_tiles.return_value = [MagicMock()]
+        factory.create_dev_cards.return_value = [MagicMock()]
+        factory.create_outdoor_tiles.return_value = [MagicMock(), MagicMock()]
+
+        gp = GamePieces(factory)
+        before = gp.outdoor_tiles_remaining()
+
+        gp.draw_outdoor_tile()
+
+        self.assertEqual(gp.outdoor_tiles_remaining(), before - 1)
+
+    # ----------------------------------------------------------------------
+    # Place tile is delegated to Board
+    # ----------------------------------------------------------------------
+    def test_place_tile_delegates_to_board(self):
+        """ Test that place_tile method delegates to the Board's place_tile method """
+        factory = MagicMock()
+
+        factory.create_indoor_tiles.return_value = [MagicMock()]
+        factory.create_outdoor_tiles.return_value = [MagicMock()]
+        factory.create_dev_cards.return_value = [MagicMock()]
+        board_instance = MagicMock()
+        factory.create_board.return_value = board_instance
+
+        gp = GamePieces(factory)
+
+        new_tile = MagicMock()
+        new_exit = Direction.EAST
+        placed_tile = MagicMock()
+        placed_tile_exit = Direction.WEST
+
+        gp.place_tile(new_tile, new_exit, placed_tile, placed_tile_exit)
+
+        board_instance.place_tile.assert_called_once_with(
+            new_tile, new_exit, placed_tile, placed_tile_exit
+        )
+        
+    # ----------------------------------------------------------------------
+    # The is_stuck combines board state and tile counts
+    # ----------------------------------------------------------------------
+    def test_is_stuck_combines_board_state_and_tile_counts(self):
+        """ Test is_stuck method behavior """
+        factory = MagicMock()
+
+        board_instance = MagicMock()
+        factory.create_board.return_value = board_instance
+
+        factory.create_dev_cards.return_value = []
+        factory.create_indoor_tiles.return_value = []
+        factory.create_outdoor_tiles.return_value = []
+
+        gp = GamePieces(factory)
+
+        # Case 1: Board reports stuck, no tiles remaining
+        board_instance.is_stuck.return_value = True
+        self.assertTrue(gp.is_stuck())
+
+        # Case 2: Board reports not stuck
+        board_instance.is_stuck.return_value = False
+        self.assertFalse(gp.is_stuck())
+
+        # Case 3: Board reports stuck, but indoor tiles remain
+        board_instance.is_stuck.return_value = True
+        factory.create_indoor_tiles.return_value = [MagicMock()]
+        gp = GamePieces(factory)  # Re-initialize to get new tile list
+        self.assertFalse(gp.is_stuck())
+
+        # Case 4: Board reports stuck, but outdoor tiles remain
+        factory.create_indoor_tiles.return_value = []
+        factory.create_outdoor_tiles.return_value = [MagicMock()]
+        gp = GamePieces(factory)  # Re-initialize to get new tile list
+        self.assertFalse(gp.is_stuck())
 
 if __name__ == "__main__":
     unittest.main()
