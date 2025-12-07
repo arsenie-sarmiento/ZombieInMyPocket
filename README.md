@@ -1,34 +1,116 @@
 # ZombieInMyPocket
-BCDE321 Advance Programming - Assignment 2 (Group)
+### BCDE321 Advance Programming - Assignment 3 (Portfolio)
 
-# About
-This is the source code for the python version of Zombie In My Pocket game
+This repository is forked from [Fallen-Pie/ZombieInMyPocket](https://github.com/Fallen-Pie/ZombieInMyPocket) shared repository, `development/iteration-two` branch.
 
-# Game Info
+---
 
-## Imagine you're trapped in a spooky house full of zombies, and you need to save the world before midnight!
+**To clone the forked repository, run:**
+```shell
+git clone https://github.com/arsenie-sarmiento/ZombieInMyPocket.git
+```
 
-## The Goal
-Find an evil zombie totem hidden in the house, then bury it in the graveyard before midnight - or you become zombie food!
 
-## How to Play:
+**Run this command to switch to `ass3/portfolio` branch**
+```shell
+git checkout ass3/portfolio
+```
 
-Explore the House: You start at the front door and flip over room tiles as you move through the house, discovering new rooms like kitchens, bedrooms, and basements.
+---
+### Testimg
 
-Fight Zombies: Each room might have zombies in it. You can find weapons like "a machete, golf club, chain saw, or even your former uncle's grisly femur" to bash them.
+[Python Test Explorer](https://www.youtube.com/watch?v=V-1Sgv3xaaI&t=4s)
 
-Race Against Time: You must complete your mission before midnight - the game has a built-in time limit that makes every decision count.
+1. Setup
+```
+pip install coverage
+coverage --version
 
-Find the Temple: Look for the evil temple room where the cursed totem is hidden.
+pip install pytest pytest-cov
+pytest --cov=your_package
 
-Bury the Totem: Once you have the totem, get to the backyard graveyard and bury it to win!
+coverage html
+```
 
-## Key Features:
+2. Run test
+```
+coverage run --branch -m pytest .\tests\test_combat_before_pattern.py -vvv
+coverage run --branch -m pytest .\tests\test_combat_after_pattern.py -vvv
 
-It's a solo game that takes 5-20 minutes
+coverage run --branch -m pytest .\tests\test_player_before_pattern.py -vvv
+coverage run --branch -m pytest .\tests\test_player_after_pattern.py -vvv
 
-Quick to play, easy to learn
+coverage html
+coverage report -m
 
-It's a free print-and-play game you can download and make at home
+```
 
-Think of it like a mini horror movie where you're the hero trying to save the day - but you only have until midnight to do it!
+
+---
+### File Structure
+```
+ZombieInMyPocket/
+├─ .gitignore
+├─ src/
+│ ├─ __init__.py                            [empty]
+│ ├─ model/
+│ │ ├─ game_pieces/                           
+| │ │ ├─ __init__.py
+| │ │ ├─ board.py
+| │ │ ├─ dev_card.py
+│ | │ └─ game_pieces.py                     [target block's component]
+│ │ ├─ combat/                              
+| │ │ ├─ __init__.py
+│ | │ └─ combat.py                          [target block's component]
+│ | └─ ... (other model files)
+│ │ ├─ interfaces/
+| │ │ ├─ __init__.py
+| │ │ ├─ i_combat.py
+| │ │ ├─ i_game_pieces.py
+| │ │ ├─ i_dev_card.py
+| │ │ ├─ i_tile.py
+| │ │ └─ ... (other interface files)
+│ │ |
+│ │ ├─ __init__.py
+| │ └─ before_pattern.drawio                [UML Class Diagram]
+| |
+│ └─ model_after_pattern/                   [refactored]
+│   ├─ enums/
+|   │   ├─ combat_option.py
+|   │   └─ __init__().py
+│   ├─ interfaces/
+|   │   ├─ combat_strategy.py                   [Strategy]
+|   │   ├─ i_game_pieces.py                     [Client Interface/Abstract Client]
+|   │   ├─ i_game_pieces_factory.py             [Abstract Factory]
+|   │   ├─ i_board.py                           [Abstract Product]
+|   │   ├─ i_dev_card.py                        [Abstract Product]
+|   │   ├─ i_tile.py                            [Abstract Product]
+|   │   └─ __init__().py
+│   ├─ game_pieces/
+|   │   ├─ game_pieces.py                      [Client]
+|   │   ├─ default_game_pieces_factory.py      [Concrete Factory]
+|   │   ├─ dev_card.py                         [Concrete Product]
+|   │   ├─ board.py                            [Concrete Product]
+|   │   ├─ tile.py                             [Concrete Product]
+|   │   └─ __init__().py
+│   ├─ combat/
+|   │   ├─ combat.py                        [Context]
+|   │   ├─ cower_strategy.py                [Concrete Strategy]
+|   │   ├─ runaway_strategy.py              [Concrete Strategy]
+|   │   ├─ engage_strategy.py               [Concrete Strategy]
+|   │   └─ __init__().py
+|   └─ after_pattern.drawio                 [UML Class Diagram]
+| 
+├─ tests/
+│ ├─ mocks/                                 [Mock files]
+| │   ├─ combat.py                          [Context]
+│ ├─ __init__.py
+│ ├─ test_game_pieces_before_pattern.py
+│ ├─ test_game_pieces_after_pattern.py
+│ ├─ test_combat_before_pattern.py
+│ └─ test_combat_after_pattern.py
+└─ README.md
+```
+---
+- *model* -> code before applying pattern
+
