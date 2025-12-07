@@ -103,7 +103,11 @@ ZombieInMyPocket/
 | 
 ├─ tests/
 │ ├─ mocks/                                 [Mock files]
-| │   ├─ combat.py                          [Context]
+| │   ├─ __init__.py                        
+| │   ├─ combat.py                          
+| │   ├─ player.py                          
+| │   ├─ strategy.py                        
+| │   └─ game_pieces_factory.py                        
 │ ├─ __init__.py
 │ ├─ test_game_pieces_before_pattern.py
 │ ├─ test_game_pieces_after_pattern.py
