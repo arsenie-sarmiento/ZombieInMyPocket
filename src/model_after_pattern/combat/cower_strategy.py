@@ -2,7 +2,7 @@ from typing import Final
 from ..interfaces import CombatStrategy
 
 class CowerStrategy(CombatStrategy):
-    """"""
+    """Handles combat strategy by cowering."""
 
     HEAL_AMOUNT: Final = 3
 

@@ -2,7 +2,7 @@ from typing import Final
 from ..interfaces.combat_strategy import CombatStrategy
 
 class RunAwayStrategy(CombatStrategy):
-    """"""
+    """Handles combat strategy by running away."""
 
     RUN_AWAY_DAMAGE: Final = 1
 

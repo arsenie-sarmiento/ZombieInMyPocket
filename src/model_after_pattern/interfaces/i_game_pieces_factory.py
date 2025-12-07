@@ -8,20 +8,16 @@ class IGamePiecesFactory(ABC):
 
     @abstractmethod
     def create_board(self) -> IBoard:
-        ...
+        pass
 
     @abstractmethod
     def create_dev_cards(self) -> List[IDevCard]:
-        ...
+        pass
 
     @abstractmethod
     def create_indoor_tiles(self) -> List[ITile]:
-        ...
+        pass
 
     @abstractmethod
     def create_outdoor_tiles(self) -> List[ITile]:
-        ...
-
-    @abstractmethod
-    def shuffle_tiles(self, tiles: list) -> None:
-        ...
+        pass

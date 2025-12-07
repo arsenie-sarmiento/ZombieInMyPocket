@@ -1,6 +1,7 @@
 from ..interfaces.combat_strategy import CombatStrategy
 
 class EngageStrategy(CombatStrategy):
+    """Handles combat strategy by engaging the enemy."""
     def __init__(self):
         pass
 

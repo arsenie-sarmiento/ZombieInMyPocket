@@ -9,14 +9,12 @@ class GamePieces(IGamePieces):
         self.setup()
 
     def setup(self) -> None:
-        # All creation now comes from the factory
         self._board = self._factory.create_board()
         self._dev_cards = self._factory.create_dev_cards()
         self._indoor_tiles = self._factory.create_indoor_tiles()
         self._outdoor_tiles = self._factory.create_outdoor_tiles()
 
         if self._indoor_tiles:
-            # Place the foyer tile (top indoor tile before shuffling)
             foyer_tile = self._indoor_tiles.pop()
             self._board.place_tile(
                 foyer_tile,
@@ -25,12 +23,10 @@ class GamePieces(IGamePieces):
                 Direction.SOUTH
             )
 
-            # Shuffle via factory abstraction
             self._factory.shuffle_tiles(self._indoor_tiles)
             self._factory.shuffle_tiles(self._outdoor_tiles)
 
         else:
-            # No indoor tiles, skipping placement & shuffle
             pass
 
     def draw_dev_card(self) -> IDevCard:
