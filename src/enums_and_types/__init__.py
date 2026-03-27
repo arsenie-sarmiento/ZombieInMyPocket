@@ -1,20 +1,21 @@
-from .enums import Rotation, Direction, ItemType, ItemName
+from .direction import Direction
+from .rotation import Rotation
+from .item import ItemType, ItemName, ItemInfo
 from .types import Position
 from .game_over_reason import GameOverReason
-from .game_message import MessageType, GameSetupMessage, GameFeedbackMessage, GameOverMessage, GameInstruction, AlertMessage, ErrorMessage
+from .game_message import GameStateMessage, GameSetupMessage, GameInstruction, GameOverMessage, MessageType
 
 __all__ = [
-    'Rotation',
     'Direction',
+    'Rotation',
     'ItemType',
     'ItemName',
+    'ItemInfo',
     'Position',
     'GameOverReason',
-    'MessageType',
+    'GameStateMessage',
     'GameSetupMessage',
-    'GameFeedbackMessage',
-    'GameOverMessage',
     'GameInstruction',
-    'AlertMessage',
-    'ErrorMessage'
+    'GameOverMessage',
+    'MessageType'
 ]

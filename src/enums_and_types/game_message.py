@@ -1,36 +1,20 @@
 from enum import Enum
 
-# class MessageCategory(Enum):
-#     EVENT = "event_triggered"
-#     KEY = "key_triggered"
-
-# class EventMessage(Enum):
-#     GAME_STATE = "Game update: {0}"
-#     ALERT = "⚠ Alert: {0}"
-#     FEEDBACK = "⚠ Update: {0}"
-#     INVALID_MOVE = "Invalid move: {0}"
-#
-# class KeyMessage(Enum):
-#     TOOLTIP = "Info: {0}"
-#     STATISTICS = "Stats → Health: {0}, Attack: {1}, Time: {2}, Room: {3}"
-
 class MessageType(Enum):
-    STATUS = "Game update: {0}"             # Persistent state (time, health, room updates)
-    ALERT = "⚠ Alert: {0}"                  # Urgent warning (low health, invalid move, etc.)
-    FEEDBACK = "⚠ Update: {0}"              # General events (items acquired, score gained) and Actions (draw card, grab item, etc.)
-
-    TOOLTIP = "Info: {0}"                   # Tips, prompts, or guidance
-    STATISTICS = "Stats → Health: {0}, Attack: {1}, Time: {2}, Room: {3}"
+    ALERT = "alert"           # Urgent warning (low health, invalid move, etc.)
+    STATUS = "status"         # Persistent state (time, health, room updates)
+    INSTRUCTION = "instruction"  # Tips, prompts, or guidance
+    FEEDBACK = "feedback"     # General events (items acquired, score gained) and Actions (draw card, grab item, etc.)
 
 # Arsenie: [Event-driven] Game setup messages, used in get-game-status and game-state-manager.
 class GameSetupMessage(Enum):
     """Feedback Messages related to game initialisation."""
-    GAME_START = "Welcome Player! You are in room {0}"
+    GAME_START = "Welcome Player!"
     INITIALISE = "Initialising game..."
     SHUFFLING_CARDS = "Shuffling DevCard deck..."
 
 # Arsenie: [Event-driven] List of the game states, used in get-game-status and game-state-manager.
-class GameFeedbackMessage(Enum):
+class GameStateMessage(Enum):
     """Feedback Message Codes for changes in the game triggerred by the user."""
     TIME_CHANGE= "It is now {} PM"
     ROOM_CHANGED = "You are now in room {}"
@@ -62,6 +46,8 @@ class AlertMessage(Enum):
     INVALID_DOOR_EXIT_SELECTED = "You can't enter from this side. There's no door here."
     INVALID_GRASS_PATH_SELECTED = "You can't enter from this side. Hedges block your path."
 
-class ErrorMessage(Enum):
+class UnknownErrorMessage(Enum):
     """Codes for system errors in the game."""
     UnknownStatusError = "Unknown system error!"
+
+

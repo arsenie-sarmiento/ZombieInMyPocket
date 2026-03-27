@@ -8,12 +8,12 @@ from abc import ABC, abstractmethod
 from .i_dev_card import IDevCard
 from .i_tile import ITile
 from src.enums_and_types.types import Position
-from src.enums_and_types.enums import Direction #Added my Alex L
+from src.enums_and_types.enums import Direction  # Added my Alex L
 
 
 class IGamePieces(ABC):
     """Abstract interface for managing game pieces and board state.
-    
+
     Handles the deck management, tile drawing, placement validation,
     and board state tracking for the game.
     """
@@ -26,7 +26,7 @@ class IGamePieces(ABC):
     @abstractmethod
     def draw_dev_card(self) -> IDevCard:
         """Draw the next development card from the deck.
-        
+
         Returns:
             The next development card to be used
         """
@@ -35,7 +35,7 @@ class IGamePieces(ABC):
     @abstractmethod
     def dev_cards_remaining(self) -> int:
         """Get the number of development cards left in the deck.
-        
+
         Returns:
             Number of cards remaining
         """
@@ -44,7 +44,7 @@ class IGamePieces(ABC):
     @abstractmethod
     def draw_indoor_tile(self) -> ITile:
         """Draw the next indoor tile from the deck.
-        
+
         Returns:
             The next indoor tile to be placed
         """
@@ -53,7 +53,7 @@ class IGamePieces(ABC):
     @abstractmethod
     def indoor_tiles_remaining(self) -> int:
         """Get the number of indoor tiles left in the deck.
-        
+
         Returns:
             Number of indoor tiles remaining
         """
@@ -62,7 +62,7 @@ class IGamePieces(ABC):
     @abstractmethod
     def draw_outdoor_tile(self) -> ITile:
         """Draw the next outdoor tile from the deck.
-        
+
         Returns:
             The next outdoor tile to be placed
         """
@@ -71,7 +71,7 @@ class IGamePieces(ABC):
     @abstractmethod
     def outdoor_tiles_remaining(self) -> int:
         """Get the number of outdoor tiles left in the deck.
-        
+
         Returns:
             Number of outdoor tiles remaining
         """
@@ -92,13 +92,13 @@ class IGamePieces(ABC):
                        placed_tile: ITile,
                        placed_tile_exit: Direction) -> bool:
         """Check if a new tile can be placed adjacent to an existing tile.
-        
+
         Args:
             new_tile: The tile to be placed
             new_exit: The exit direction on the new tile
             placed_tile: The existing tile to connect to
             placed_tile_exit: The exit direction on the existing tile
-            
+
         Returns:
             True if the placement is valid, False otherwise
         """
@@ -108,7 +108,7 @@ class IGamePieces(ABC):
     def place_tile(self, new_tile: ITile, new_exit: Direction,
                    placed_tile: ITile, placed_tile_exit: Direction) -> None:
         """Place a new tile adjacent to an existing tile on the board.
-        
+
         Args:
             new_tile: The tile to place
             new_exit: The exit direction on the new tile
@@ -119,13 +119,13 @@ class IGamePieces(ABC):
 
     @abstractmethod
     def can_move_to_new_tile(self, placed_tile: ITile,
-                    placed_tile_exit: Direction) -> bool:
+                             placed_tile_exit: Direction) -> bool:
         """Check if the player can move to a tile through the given exit.
-        
+
         Args:
             placed_tile: The tile to move from
             placed_tile_exit: The exit direction to use
-            
+
         Returns:
             True if movement is possible, False otherwise
         """
@@ -134,10 +134,10 @@ class IGamePieces(ABC):
     @abstractmethod
     def get_tile(self, position: Position) -> ITile | None:
         """Get the tile at a specific position on the board.
-        
+
         Args:
             position: The board position to check
-            
+
         Returns:
             The tile at that position, or None if no tile is placed there
         """
@@ -146,7 +146,7 @@ class IGamePieces(ABC):
     @abstractmethod
     def is_stuck(self) -> bool:
         """Check if the player is unable to move due to lack of available tiles.
-        
+
         Returns:
             True if the player cannot move and no tiles can be drawn
         """
@@ -155,10 +155,10 @@ class IGamePieces(ABC):
     @abstractmethod
     def get_tile_position(self, tile: ITile) -> Position:
         """Get the board position of a specific tile.
-        
+
         Args:
             tile: The tile to locate
-            
+
         Returns:
             The position of the tile on the board
         """

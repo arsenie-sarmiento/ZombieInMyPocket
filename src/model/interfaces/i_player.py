@@ -8,9 +8,10 @@ from abc import ABC, abstractmethod
 from src.enums_and_types import Position
 from .i_item import IItem
 
+
 class IPlayer(ABC):
     """Abstract interface defining the contract for player objects in the game.
-    
+
     The player interface defines all the essential player actions including
     health management, combat mechanics, movement, inventory management,
     and item usage including combinations.
@@ -19,7 +20,7 @@ class IPlayer(ABC):
     @abstractmethod
     def get_health(self) -> int:
         """Get the player's current health points.
-        
+
         Returns:
             Current health as an integer
         """
@@ -28,7 +29,7 @@ class IPlayer(ABC):
     @abstractmethod
     def take_damage(self, amount: int) -> None:
         """Reduce the player's health by the specified amount.
-        
+
         Args:
             amount: Number of health points to remove
         """
@@ -37,7 +38,7 @@ class IPlayer(ABC):
     @abstractmethod
     def heal(self, amount: int) -> None:
         """Increase the player's health by the specified amount.
-        
+
         Args:
             amount: Number of health points to restore
         """
@@ -46,7 +47,7 @@ class IPlayer(ABC):
     @abstractmethod
     def get_attack_power(self) -> int:
         """Get the player's total attack power including item bonuses.
-        
+
         Returns:
             Total attack value including base stats and equipped item bonuses
         """
@@ -55,7 +56,7 @@ class IPlayer(ABC):
     @abstractmethod
     def has_totem(self) -> bool:
         """Check if the player possesses the evil totem.
-        
+
         Returns:
             True if the player has the totem, False otherwise
         """
@@ -64,7 +65,7 @@ class IPlayer(ABC):
     @abstractmethod
     def get_position(self) -> Position:
         """Get the player's current position on the game board.
-        
+
         Returns:
             The player's current Position coordinates
         """
@@ -73,7 +74,7 @@ class IPlayer(ABC):
     @abstractmethod
     def set_position(self, position: Position) -> None:
         """Move the player to a new position on the game board.
-        
+
         Args:
             position: The new Position coordinates for the player
         """
@@ -82,7 +83,7 @@ class IPlayer(ABC):
     @abstractmethod
     def use_item(self, item: IItem) -> None:
         """Use an item from the player's inventory.
-        
+
         Args:
             item: The item to use from inventory
         """
@@ -91,7 +92,7 @@ class IPlayer(ABC):
     @abstractmethod
     def get_inventory(self) -> list[IItem]:
         """Get a copy of the player's current inventory.
-        
+
         Returns:
             List of items currently in the player's possession
         """
@@ -100,7 +101,7 @@ class IPlayer(ABC):
     @abstractmethod
     def add_item_to_inventory(self, item: IItem) -> None:
         """Add an item to the player's inventory.
-        
+
         Args:
             item: The item to add to inventory
         """
@@ -109,7 +110,7 @@ class IPlayer(ABC):
     @abstractmethod
     def remove_item_from_inventory(self, item: IItem) -> None:
         """Remove an item from the player's inventory.
-        
+
         Args:
             item: The item to remove from inventory
         """
@@ -118,7 +119,7 @@ class IPlayer(ABC):
     @abstractmethod
     def combine_items_from_inventory(self) -> bool:
         """Attempt to combine compatible items in the inventory.
-        
+
         Returns:
             True if a combination was successful, False otherwise
         """
