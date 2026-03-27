@@ -5,7 +5,7 @@ specifying required methods for health management, combat, movement, and invento
 """
 
 from abc import ABC, abstractmethod
-from src.enums_and_types import Position
+from src.enums_and_types.types import Position
 from .i_item import IItem
 
 
@@ -59,6 +59,14 @@ class IPlayer(ABC):
         
         Returns:
             True if the player has the totem, False otherwise
+        """
+        pass
+
+    def set_has_totem(self, has_totem: bool) -> None:
+        """Set the totem possession state.
+        
+        Args:
+            has_totem: True if player should have the totem, False otherwise
         """
         pass
 
