@@ -120,8 +120,8 @@ pytest
 A visual representation of the maze and game logic is available in the PDF file:
 
 - [Iteration 1](https://github.com/arseniedev/zombie-in-my-pocket/blob/docs/diagrams/zombie-in-my-pocket-class-diagram-iteration-1.pdf)
-- [Iteration 1](https://github.com/arseniedev/zombie-in-my-pocket/blob/docs/diagrams/zombie-in-my-pocket-class-diagram-iteration-2.pdf)
-- [Iteration 1](https://github.com/arseniedev/zombie-in-my-pocket/blob/docs/diagrams/zombie-in-my-pocket-class-diagram-iteration-3.pdf)
+- [Iteration 2](https://github.com/arseniedev/zombie-in-my-pocket/blob/docs/diagrams/zombie-in-my-pocket-class-diagram-iteration-2.pdf)
+- [Iteration 3](https://github.com/arseniedev/zombie-in-my-pocket/blob/docs/diagrams/zombie-in-my-pocket-class-diagram-iteration-3.pdf)
 
 ---
 
