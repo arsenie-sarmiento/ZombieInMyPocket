@@ -99,9 +99,19 @@ pytest
 ## Project Structure
 
 <!-- START_STRUCTURE -->
-
 ```text
+.
+├── README.md
+├── requirements.txt
+├── src
+│   ├── controller
+│   ├── enums_and_types
+│   ├── main.py
+│   ├── model
+│   └── view
+└── structure.txt
 
+6 directories, 4 files
 ```
 <!-- END_STRUCTURE -->
 
